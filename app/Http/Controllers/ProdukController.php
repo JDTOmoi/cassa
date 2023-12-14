@@ -27,6 +27,32 @@ class ProdukController extends Controller
         ]);
     }
 
+    public function editprodukview(Produk $p)
+    {
+        $produkedit = Produk::where('id',$p->id)->first();
+
+
+        return view('produk/editproduk',
+        [
+            "activeProduk"=>"active",
+        ],
+        compact('produkedit'));
+    }
+
+
+    public function updateproduk(Request $request, Produk $produkedit){
+        $produkedit->update([
+            'image'=>$request->image,
+            'name'=>$request->name,
+            'sku'=>$request->sku,
+            'brand'=>$request->brand,
+            'tags'=>$request->tags,
+            'description'=>$request->description,
+        ]);
+
+        return redirect()->route('daftarproduk');
+    }
+
 
     public function tambahproduk(Request $request)
     {
@@ -41,6 +67,12 @@ class ProdukController extends Controller
 
         return redirect()->route('daftarproduk');
 
+    }
+
+    public function hapusproduk(Produk $p){
+        $p->delete();
+
+        return redirect()->route('daftarproduk');
     }
 
 }

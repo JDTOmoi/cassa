@@ -82,13 +82,13 @@
                   <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}"> Daftar Produk</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Features</a>
+                  <a class="nav-link" href="#">Portofolio</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
+                  <a class="nav-link" href="#">Berita</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
+                  <a class="nav-link" href="#">Contact</a>
                 </li>
               </ul>
             </div>

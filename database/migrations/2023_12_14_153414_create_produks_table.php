@@ -10,7 +10,7 @@ return new class extends Migration
      * Run the migrations.
      */
 
-    public $timestamps = false;
+    // public $timestamps = false;
 
     public function up(): void
     {
