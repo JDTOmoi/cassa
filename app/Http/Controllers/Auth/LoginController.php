@@ -46,6 +46,6 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        return redirect()->route('home');
+        return redirect()->route('welcome');
     }
 }
