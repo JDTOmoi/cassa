@@ -61,4 +61,14 @@ class LoginController extends Controller
             'is_login' => '1',
         ]);
     }
+
+    public function logout(Request $request){
+        $user = User::findOrFail(Auth::id());
+        $user->update([
+            'is_login'=>'0'
+        ]);
+
+        $request->session()->invalidate();
+        return $this->loggedOut($request) ?:redirect('login');
+    }
 }
