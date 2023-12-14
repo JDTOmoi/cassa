@@ -48,4 +48,11 @@ class LoginController extends Controller
 
         return redirect()->route('home');
     }
+
+    private function isLogin(int $id){
+        $user = User::findOrFail($id);
+        return $user->update([
+            'is_login' => '1',
+        ]);
+    }
 }
