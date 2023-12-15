@@ -18,7 +18,7 @@ use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 
 
