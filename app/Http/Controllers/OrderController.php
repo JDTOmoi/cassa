@@ -6,5 +6,13 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    //
+    public function orderview()
+    {
+        $order = Order::all();
+
+        return view('order/order',[
+            "activeProduk"=>"active",
+            "order"=>$order
+        ]);
+    }
 }
