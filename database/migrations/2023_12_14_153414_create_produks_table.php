@@ -9,11 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    // public $timestamps = false;
+
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id("category_id");
-            $table->string("category_name");
+        Schema::create('produks', function (Blueprint $table) {
+            $table->id();
+            $table->string('image');
+            $table->string('name');
+            $table->string('sku');
+            $table->string('brand');
+            $table->string('tags');
+            $table->string('description');
             $table->timestamps(0);
         });
     }
@@ -23,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('produks');
     }
 };

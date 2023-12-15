@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -46,6 +48,27 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        return redirect()->route('welcome');
+        if(Auth::attempt($member)){
+            return redirect()->route('home');
+        }
+        return redirect()->route('login');
+
+    }
+
+    private function isLogin(int $id){
+        $user = User::findOrFail($id);
+        return $user->update([
+            'is_login' => '1',
+        ]);
+    }
+
+    public function logout(Request $request){
+        $user = User::findOrFail(Auth::id());
+        $user->update([
+            'is_login'=>'0'
+        ]);
+
+        $request->session()->invalidate();
+        return $this->loggedOut($request) ?:redirect('login');
     }
 }
