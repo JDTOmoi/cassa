@@ -35,7 +35,7 @@ Route::get('/produk/editproduk/{p}', [ProdukController::class, 'editprodukview']
 Route::put('/produk/updateproduk/{produkedit}', [ProdukController::class, 'updateproduk'])->middleware('auth')->name('updatepro');
 Route::delete('/produk/hapusproduk/{p}', [ProdukController::class, 'hapusproduk'])->middleware('auth')->name('hapusproduk');
 
-//order
+//category
 
 Route::get('/category', [CategoryController::class, 'categoryview'])->middleware('auth')->name('daftarcategory');
 Route::get('/category/tambahcategory', [CategoryController::class, 'tambahcategoryview'])->middleware('auth')->name('tambahcategory');
@@ -53,7 +53,7 @@ Route::get('/brand/editbrand/{b}', [BrandController::class, 'editbrandview'])->m
 Route::put('/brand/updatebrand/{brandedit}', [BrandController::class, 'updatebrand'])->middleware('auth')->name('updatebrd');
 Route::delete('/brand/hapusbrand/{b}', [BrandController::class, 'hapusbrand'])->middleware('auth')->name('hapusbrand');
 
-//category
+//order
 
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 

@@ -6,8 +6,8 @@
         @method('put')
         @csrf
         <div class="mb-3">
-            <label for="brand_name" class="form-label">Brand Name</label>
-            <input type="text" class="form-control" id="brand_name" name="brand_name" placeholder="Brand Name">
+            <label for="brand_name" class="form-label">Nama Merek</label>
+            <input type="text" class="form-control" id="brand_name" name="brand_name" placeholder="Nama Merek" value="{{$brandedit->brand_name}}">
         </div>
         <button type="submit" class="btn btn-primary mt-3">Edit</button>
     </form>

@@ -13,7 +13,7 @@
     <thead>
       <tr>
         <th scope="col">No</th>
-        <th scope="col">name</th>
+        <th scope="col">Nama Merek</th>
         <th scope="col" colspan="2">Action</th>
       </tr>
     </thead>

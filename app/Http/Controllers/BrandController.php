@@ -28,7 +28,7 @@ class BrandController extends Controller
 
     public function editbrandview(Brand $b)
     {
-        $brandedit = Brand::where('brand_id',$b->brand_id)->first();
+        $brandedit = Brand::where('id',$b->id)->first();
 
         return view('brand/editbrand',[
             "activeBrand" => "active"

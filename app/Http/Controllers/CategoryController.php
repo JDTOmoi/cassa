@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
-    public function brandview()
+    public function categoryview()
     {
         $category = Category::all();
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
     public function editcategoryview(Category $c)
     {
-        $categoryedit = Category::where('category_id',$c->category_id)->first();
+        $categoryedit = Category::where('id',$c->id)->first();
 
         return view('category/editcategory',[
             "activeCategory" => "active"
@@ -36,7 +36,7 @@ class CategoryController extends Controller
         compact('categoryedit'));
     }
 
-    public function updatebrand(Request $request, Category $categoryedit){
+    public function updatecategory(Request $request, Category $categoryedit){
         $categoryedit->update([
             'category_name' => $request->category_name
         ]);
