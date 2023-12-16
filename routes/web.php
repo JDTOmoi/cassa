@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,13 @@ Route::put('/produk/updateproduk/{produkedit}', [ProdukController::class, 'updat
 Route::delete('/produk/hapusproduk/{p}', [ProdukController::class, 'hapusproduk'])->middleware('auth')->name('hapusproduk');
 
 //order
+
+Route::get('/category', [CategoryController::class, 'categoryview'])->middleware('auth')->name('daftarcategory');
+Route::get('/category/tambahcategory', [CategoryController::class, 'tambahcategoryview'])->middleware('auth')->name('tambahcategory');
+Route::post('/category/tambahcategory', [CategoryController::class, 'tambahcategory'])->middleware('auth')->name('tambahctg');
+Route::get('/category/editcategory/{c}', [CategoryController::class, 'editcategoryview'])->middleware('auth')->name('editcategory');
+Route::put('/category/updatecategory/{categoryedit}', [CategoryController::class, 'updatecategory'])->middleware('auth')->name('updatectg');
+Route::delete('/category/hapuscategory/{c}', [CategoryController::class, 'hapuscategory'])->middleware('auth')->name('hapuscategory');
 
 //brand
 

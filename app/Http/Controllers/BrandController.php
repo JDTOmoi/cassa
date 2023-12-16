@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BrandController extends Controller
 {
@@ -17,7 +19,7 @@ class BrandController extends Controller
     }
     
     
-    public function tambahbrandView()
+    public function tambahbrandview()
     {
         return view('brand/tambahbrand',[
             "activeBrand" => "active"
@@ -26,7 +28,7 @@ class BrandController extends Controller
 
     public function editbrandview(Brand $b)
     {
-        $brandedit = Brand::where('brand_id',$b->id)->first();
+        $brandedit = Brand::where('brand_id',$b->brand_id)->first();
 
         return view('brand/editbrand',[
             "activeBrand" => "active"
@@ -53,7 +55,7 @@ class BrandController extends Controller
     public function hapusbrand(Brand $b){
         $b->delete();
 
-        return redirect()->route('daftarproduk');
+        return redirect()->route('daftarbrand');
     }
 
 }

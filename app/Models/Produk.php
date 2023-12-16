@@ -17,4 +17,8 @@ class Produk extends Model
         'tags',
         'description',
     ];
+
+    public function pcs(): HasMany{
+        return $this->hasMany(ProdCata::class, 'produk_id', 'id');
+    }
 }

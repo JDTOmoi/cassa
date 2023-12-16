@@ -78,8 +78,14 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item {{$activeProduk ?? ''}}">
                   <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}"> Daftar Produk</a>
+                </li>
+                <li class="nav-item {{$activeCategory ?? ''}}">
+                  <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('daftarcategory')}}">Kategori</a>
+                </li>
+                <li class="nav-item {{$activeBrand ?? ''}}">
+                  <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('daftarbrand')}}">Brand</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Portofolio</a>
