@@ -27,6 +27,10 @@ class NewsletterController extends Controller
     {
         //
 
+        return view('news/tambahnews',[
+            'activeNews'=>'active',
+        ]);
+
     }
 
     /**
@@ -34,7 +38,29 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'news_image'=>'image',
+            'title'=>'required|max:255',
+            'content'=>'',
+        ]);
+
+        if($request->file('news_image')){
+            $validatedData['news_image'] = $request->file('news_image')->store('images',['disk'=>'public']);
+
+        Newsletter::create([
+            'news_image'=>$validatedData['news_image'],
+            'title'=>$validatedData['title'],
+            'content'=>$validatedData['content'],
+        ]);
+
+        }else{
+            Newsletter::create([
+                'title'=>$validatedData['title'],
+                'content'=>$validatedData['content'],
+            ]);
+        }
+
+        return redirect()->route('berita');
     }
 
     /**

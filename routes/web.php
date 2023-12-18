@@ -63,6 +63,8 @@ Route::delete('/order/hapusorder/{o}', [OrderController::class, 'hapusorder'])->
 
 //news
 Route::get('/news',[NewsletterController::class,'index'])->middleware('auth')->name('berita');
+Route::get('/news/tambahberita',[NewsletterController::class,'create'])->middleware('auth')->name('tambahberita');
+Route::post('/news/tambahberita',[NewsletterController::class,'store'])->middleware('auth')->name('addberita');
 
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 

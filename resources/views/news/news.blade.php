@@ -11,6 +11,19 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-2">
+            <form method="GET" action="{{route('tambahberita')}}" class="px-5 py-3">
+                <button class="btn btn-primary" href="{{route('tambahberita')}}">
+                    Tambah Berita
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+
     <div class="px-5 py-3 h-20 container">
         <div style="max-height: 200px; overflow: hidden;">
         <img class=" img-fluid " src="https://images.theconversation.com/files/524157/original/file-20230503-1364-56rt5t.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop">
@@ -32,7 +45,7 @@
         @if($news2->news_image)
         <img class=" img-fluid " src="{{asset('storage/'.$news2->news_image)}}" alt="{{$news2->title}}">
         @else
-        <img src="{{asset('images/gaming.jpg')}}" alt="{{$news2->title}}" class="img-fluid">
+        <img src="{{asset('images/imagenotfound.jpg')}}" alt="{{$news2->title}}" class="img-fluid">
         @endif
         </div>
         <article class="blog-post">

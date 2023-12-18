@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('news_image')->nullable();
             $table->string('title')->nullable();
             $table->longText('content')->nullable();
-            $table->date('created_at');
-            // $table->timestamps();
+            $table->date('created_at')->nullable();
+            // $table->timestamps(0);
         });
     }
 
