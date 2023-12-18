@@ -15,4 +15,11 @@ class OrderController extends Controller
             "order"=>$order
         ]);
     }
+
+    public function tambahorderview()
+    {
+        return view('order/tambahorder',[
+            "activeOrder" => "active"
+        ]);
+    }
 }

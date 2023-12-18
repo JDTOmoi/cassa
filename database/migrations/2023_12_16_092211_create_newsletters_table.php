@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('newsletters', function (Blueprint $table) {
             $table->id();
+            $table->string("title");
+            $table->string("summary");
+            $table->text("description");
             $table->timestamps();
         });
     }
