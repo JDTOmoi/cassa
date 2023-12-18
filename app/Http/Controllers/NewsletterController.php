@@ -78,17 +78,46 @@ class NewsletterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Newsletter $newsletter)
+    public function edit(Newsletter $news2)
     {
-        //
+        $newsedit = Newsletter::where('id',$news2->id)->first();
+        return view('news/editnews',['activeNews'=>'active'],compact('newsedit'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Newsletter $newsletter)
+    public function update(Request $request, Newsletter $news2)
     {
-        //
+        $validatedData = $request->validate([
+            'news_image'=>'image',
+            'title'=>'required|max:255',
+            'content'=>'',
+        ]);
+
+        if($request->file('news_image')){
+            if($news2->news_image){
+                Storage::disk('public')->delete($news2->news_image);
+            }
+
+
+            $validatedData['news_image'] = $request->file('news_image')->store('images',['disk'=>'public']);
+
+        $news2->update([
+            'news_image'=>$validatedData['news_image'],
+            'title'=>$validatedData['title'],
+            'content'=>$validatedData['content'],
+            'created_at'=>now(),
+        ]);
+
+        }else{
+            $news2->update([
+                'title'=>$validatedData['title'],
+                'content'=>$validatedData['content'],
+                'created_at'=>now(),
+            ]);
+        }
+        return redirect()->route('berita');
     }
 
     /**

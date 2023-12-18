@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="px-5 py-3 h-20 container">
+    {{-- <div class="px-5 py-3 h-20 container">
         <div style="max-height: 200px; overflow: hidden;">
         <img class=" img-fluid " src="https://images.theconversation.com/files/524157/original/file-20230503-1364-56rt5t.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop">
         </div>
@@ -36,7 +36,7 @@
         <hr>
         <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
     </article>
-    </div>
+    </div> --}}
 
     @foreach($news as $news2)
 
@@ -56,10 +56,15 @@
         <p>{{$news2->content}}</p>
         <p>read more</p>
         <hr>
+
+        <a href="{{route('editberita',$news2)}}">
+            <button class='btn btn-warning my-3' id="edit" name='edit'>Edit Berita</button>
+        </a>
+
         <form action="{{ route('hapusberita', $news2)}}" method="POST">
             @method('delete')
             @csrf
-            <button class = 'btn btn-danger' id="delete" name='delete'>Delete News</button>
+            <button class = 'btn btn-danger' id="delete" name='delete'>Hapus Berita</button>
         </form>
 
     </article>
