@@ -64,6 +64,10 @@ Route::delete('/order/hapusorder/{o}', [OrderController::class, 'hapusorder'])->
 //news
 Route::get('/news',[NewsletterController::class,'index'])->middleware('auth')->name('berita');
 
+Route::get('/contact', function () {
+   return view('contact', ['activeContact' => 'active']);
+})->name('contact');
+
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
