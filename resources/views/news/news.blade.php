@@ -25,4 +25,26 @@
     </article>
     </div>
 
+    @foreach($news as $news2)
+
+    <div class="px-5 py-3 h-20 container">
+        <div style="max-height: 200px; overflow: hidden;">
+        @if($news2->news_image)
+        <img class=" img-fluid " src="{{asset('storage/'.$news2->news_image)}}" alt="{{$news2->title}}">
+        @else
+        <img src="{{asset('images/gaming.jpg')}}" alt="{{$news2->title}}" class="img-fluid">
+        @endif
+        </div>
+        <article class="blog-post">
+        <h2 class="blog-post-title">{{$news2->title}}</h2>
+        <p class="blog-post-meta">{{$news2->created_at}}</p>
+
+        <p>{{$news2->content}}</p>
+        <p>read more</p>
+        <hr>
+
+    </article>
+    </div>
+
+    @endforeach
 @endsection

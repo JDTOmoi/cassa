@@ -12,8 +12,11 @@ class NewsletterController extends Controller
      */
     public function index()
     {
+        $news = Newsletter::all();
+
         return view('news/news',[
             'activeNews'=>'active',
+            'news'=>$news
         ]);
     }
 
@@ -23,6 +26,7 @@ class NewsletterController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
