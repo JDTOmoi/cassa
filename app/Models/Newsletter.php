@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Newsletter extends Model
 {
+    // protected $dateFormat = 'd-m-Y';
     public $timestamps = false;
 
     use HasFactory;

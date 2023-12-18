@@ -50,7 +50,8 @@
         </div>
         <article class="blog-post">
         <h2 class="blog-post-title">{{$news2->title}}</h2>
-        <p class="blog-post-meta">{{$news2->created_at}}</p>
+        {{-- <p class="blog-post-meta">{{$news2->created_at->format('d-M-Y')}}</p> --}}
+        <p class="blog-post-meta">{{date('d-M-Y',strtotime($news2->created_at))}}</p>
 
         <p>{{$news2->content}}</p>
         <p>read more</p>

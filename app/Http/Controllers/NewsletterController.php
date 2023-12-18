@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class NewsletterController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -51,12 +52,14 @@ class NewsletterController extends Controller
             'news_image'=>$validatedData['news_image'],
             'title'=>$validatedData['title'],
             'content'=>$validatedData['content'],
+            'created_at'=>now(),
         ]);
 
         }else{
             Newsletter::create([
                 'title'=>$validatedData['title'],
                 'content'=>$validatedData['content'],
+                'created_at'=>now(),
             ]);
         }
 
