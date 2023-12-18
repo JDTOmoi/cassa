@@ -11,6 +11,19 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-2">
+            <form method="GET" action="{{route('tambahberita')}}" class="px-5 py-3">
+                <button class="btn btn-primary" href="{{route('tambahberita')}}">
+                    Tambah Berita
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+
     <div class="px-5 py-3 h-20 container">
         <div style="max-height: 200px; overflow: hidden;">
         <img class=" img-fluid " src="https://images.theconversation.com/files/524157/original/file-20230503-1364-56rt5t.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop">
@@ -25,4 +38,32 @@
     </article>
     </div>
 
+    @foreach($news as $news2)
+
+    <div class="px-5 py-3 h-20 container">
+        <div style="max-height: 200px; overflow: hidden;">
+        @if($news2->news_image)
+        <img class=" img-fluid " src="{{asset('storage/'.$news2->news_image)}}" alt="{{$news2->title}}">
+        @else
+        <img src="{{asset('images/imagenotfound.jpg')}}" alt="{{$news2->title}}" class="img-fluid">
+        @endif
+        </div>
+        <article class="blog-post">
+        <h2 class="blog-post-title">{{$news2->title}}</h2>
+        {{-- <p class="blog-post-meta">{{$news2->created_at->format('d-M-Y')}}</p> --}}
+        <p class="blog-post-meta">{{date('d-M-Y',strtotime($news2->created_at))}}</p>
+
+        <p>{{$news2->content}}</p>
+        <p>read more</p>
+        <hr>
+        <form action="{{ route('hapusberita', $news2)}}" method="POST">
+            @method('delete')
+            @csrf
+            <button class = 'btn btn-danger' id="delete" name='delete'>Delete News</button>
+        </form>
+
+    </article>
+    </div>
+
+    @endforeach
 @endsection

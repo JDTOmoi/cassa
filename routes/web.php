@@ -63,6 +63,9 @@ Route::delete('/order/hapusorder/{o}', [OrderController::class, 'hapusorder'])->
 
 //news
 Route::get('/news',[NewsletterController::class,'index'])->middleware('auth')->name('berita');
+Route::get('/news/tambahberita',[NewsletterController::class,'create'])->middleware('auth')->name('tambahberita');
+Route::post('/news/tambahberita',[NewsletterController::class,'store'])->middleware('auth')->name('addberita');
+Route::delete('/news/hapusberita/{news2}',[NewsletterController::class,'destroy'])->middleware('auth')->name('hapusberita');
 
 Route::get('/contact', function () {
    return view('contact', ['activeContact' => 'active']);
