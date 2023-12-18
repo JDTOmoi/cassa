@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsletterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,7 @@ Route::delete('/brand/hapusbrand/{b}', [BrandController::class, 'hapusbrand'])->
 
 
 //news
-Route::get('/news',[NewsController::class,'newsview'])->middleware('auth')->name('berita');
+Route::get('/news',[NewsletterController::class,'index'])->middleware('auth')->name('berita');
 
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 

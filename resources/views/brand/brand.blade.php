@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="ms-3">
 <form method="GET" action="{{route('tambahbrand')}}">
     <button class="btn btn-primary" href="{{route('tambahbrand')}}">

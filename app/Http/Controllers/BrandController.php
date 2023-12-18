@@ -51,7 +51,7 @@ class BrandController extends Controller
     public function tambahbrand(Request $request){
 
         $validate=$request->validate([
-            'brand_name'=>'required|unique|max:255'
+            'brand_name'=>'required|unique:brands|max:255'
         ]);
 
         Brand::create([
