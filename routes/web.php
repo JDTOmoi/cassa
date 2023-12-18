@@ -55,6 +55,13 @@ Route::delete('/brand/hapusbrand/{b}', [BrandController::class, 'hapusbrand'])->
 
 //order
 
+Route::get('/order', [OrderController::class, 'orderview'])->middleware('auth')->name('daftarorder');
+Route::get('/order/tambahorder', [OrderController::class, 'tambahorderview'])->middleware('auth')->name('tambahorder');
+Route::post('/order/tambahorder', [OrderController::class, 'tambahorder'])->middleware('auth')->name('tambahord');
+Route::get('/order/editorder/{b}', [OrderController::class, 'editorderview'])->middleware('auth')->name('editorder');
+Route::put('/order/updateorder/{orderedit}', [OrderController::class, 'updateorder'])->middleware('auth')->name('updateord');
+Route::delete('/order/hapusorder/{b}', [OrderController::class, 'hapusorder'])->middleware('auth')->name('hapusorder');
+
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
