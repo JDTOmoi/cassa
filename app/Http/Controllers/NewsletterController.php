@@ -12,7 +12,9 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        //
+        return view('news/news',[
+            'activeNews'=>'active',
+        ]);
     }
 
     /**

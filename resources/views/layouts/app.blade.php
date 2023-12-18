@@ -35,6 +35,26 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <ul class="navbar-nav d-md-none">
+                            <li class="nav-item {{$activeProduk ?? ''}}">
+                              <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}"> Daftar Produk</a>
+                            </li>
+                            <li class="nav-item {{$activeCategory ?? ''}}">
+                              <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('daftarcategory')}}">Kategori</a>
+                            </li>
+                            <li class="nav-item {{$activeBrand ?? ''}}">
+                              <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('daftarbrand')}}">Brand</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Portofolio</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Contact</a>
+                            </li>
+                    </ul>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -91,7 +111,7 @@
                   <a class="nav-link" href="#">Portofolio</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Berita</a>
+                  <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Contact</a>
