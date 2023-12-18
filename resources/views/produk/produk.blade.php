@@ -30,7 +30,8 @@
         <th scope="row">{{$p->image}}</th>
         <td>{{$p->name}}</td>
         <td>{{$p->sku}}</td>
-        <td>{{$p->brand}}</td>
+        {{-- <td>{{$p->brand}}</td> --}}
+        <td>{{$p->BrandProduk->brand_name}}</td>
         <td>{{$p->tags}}</td>
         <td>{{$p->description}}</td>
 

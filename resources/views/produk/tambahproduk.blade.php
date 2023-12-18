@@ -17,10 +17,24 @@
             <label for="sku" class="form-label">SKU</label>
             <input type="text" class="form-control" id="sku" name="sku" placeholder="SKU">
           </div>
-          <div class="mb-3">
+          {{-- <div class="mb-3">
             <label for="brand" class="form-label">Brand</label>
             <input type="text" class="form-control" id="brand" name="brand" placeholder="Brand">
-          </div>
+          </div> --}}
+
+          <div class="mb-3">
+            <label for="brand" class = "form-label"> Game</label>
+            <select name="brand" id="brand" class="form-select" required>
+                @foreach($brands as $brand)
+                @if(old('brand') == $brand->id)
+                <option value="{{$brand->id}}" selected>{{$brand->brand_name}}</option>
+                @else
+                <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                @endif
+                @endforeach
+            </select>
+            </div>
+
           <div class="mb-3">
             <label for="tags" class="form-label">Tags</label>
             <input type="text" class="form-control" id="tags" name="tags" placeholder="Tags">

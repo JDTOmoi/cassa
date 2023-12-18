@@ -19,7 +19,15 @@ return new class extends Migration
             $table->string('image');
             $table->string('name');
             $table->string('sku');
-            $table->string('brand');
+            // $table->string('brand');
+            $table->unsignedBigInteger('brand');
+            $table->foreign('brand')
+            ->references('id')
+            ->on('brands')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+
             $table->string('tags');
             $table->string('description');
             $table->timestamps(0);
