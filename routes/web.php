@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsletterController;
@@ -20,11 +21,8 @@ use App\Http\Controllers\NewsletterController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('welcome');
 })->name('welcome');
-
-
-
 Auth::routes();
 
 //produk
@@ -59,9 +57,9 @@ Route::delete('/brand/hapusbrand/{b}', [BrandController::class, 'hapusbrand'])->
 Route::get('/order', [OrderController::class, 'orderview'])->middleware('auth')->name('daftarorder');
 Route::get('/order/tambahorder', [OrderController::class, 'tambahorderview'])->middleware('auth')->name('tambahorder');
 Route::post('/order/tambahorder', [OrderController::class, 'tambahorder'])->middleware('auth')->name('tambahord');
-Route::get('/order/editorder/{b}', [OrderController::class, 'editorderview'])->middleware('auth')->name('editorder');
+Route::get('/order/editorder/{o}', [OrderController::class, 'editorderview'])->middleware('auth')->name('editorder');
 Route::put('/order/updateorder/{orderedit}', [OrderController::class, 'updateorder'])->middleware('auth')->name('updateord');
-Route::delete('/order/hapusorder/{b}', [OrderController::class, 'hapusorder'])->middleware('auth')->name('hapusorder');
+Route::delete('/order/hapusorder/{o}', [OrderController::class, 'hapusorder'])->middleware('auth')->name('hapusorder');
 
 //news
 Route::get('/news',[NewsletterController::class,'index'])->middleware('auth')->name('berita');
