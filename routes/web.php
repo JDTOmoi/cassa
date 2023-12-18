@@ -69,6 +69,10 @@ Route::get('/news/editberita/{news2}',[NewsletterController::class,'edit'])->mid
 Route::put('/news/editberita/{news2}',[NewsletterController::class,'update'])->middleware('auth')->name('updateberita');
 Route::delete('/news/hapusberita/{news2}',[NewsletterController::class,'destroy'])->middleware('auth')->name('hapusberita');
 
+Route::get('/contact', function () {
+   return view('contact', ['activeContact' => 'active']);
+})->name('contact');
+
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');

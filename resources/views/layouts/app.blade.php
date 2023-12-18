@@ -52,7 +52,7 @@
                               <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="#">Contact</a>
+                              <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Contact</a>
                             </li>
                     </ul>
                         <!-- Authentication Links -->

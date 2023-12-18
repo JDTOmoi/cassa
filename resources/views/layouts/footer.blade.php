@@ -2,6 +2,7 @@
     <footer>
         
         <div class="d-flex justify-content-evenly row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 border-top mx-auto">
+            <!--
             <div class="col mb-3">
             <h5>Contact info and Address</h5>
             <p>
@@ -12,7 +13,7 @@ Jl. Raya Sukomanunggal Jaya No.76, Surabaya 60188<br>
    0811-335203 (Mr Irwan)<br>
    contactus.casa@gmail.com<br>
 </p>
-            </div>
+            </div>-->
         
             <div class="col text-center mb-3">
                 <h5>Navigation</h5>
@@ -21,6 +22,8 @@ Jl. Raya Sukomanunggal Jaya No.76, Surabaya 60188<br>
                     <li class="nav-item mb-2"><a href="{{route('daftarproduk')}}" class="footer-link nav-link p-0 text-muted">Daftar Produk</a></li>
                     <li class="nav-item mb-2"><a href="{{route('daftarbrand')}}" class="footer-link nav-link p-0 text-muted">Daftar Brand</a></li>
                     <li class="nav-item mb-2"><a href="{{route('daftarcategory')}}" class="footer-link nav-link p-0 text-muted">Tambah Kategori</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('berita')}}" class="footer-link nav-link p-0 text-muted">Berita</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('contact')}}" class="footer-link nav-link p-0 text-muted">Contact</a></li>
                 </ul>
             </div>
         </div>
