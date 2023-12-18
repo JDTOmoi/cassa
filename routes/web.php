@@ -55,6 +55,10 @@ Route::delete('/brand/hapusbrand/{b}', [BrandController::class, 'hapusbrand'])->
 
 //order
 
+
+//news
+Route::get('/news',[NewsController::class,'newsview'])->middleware('auth')->name('berita');
+
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
