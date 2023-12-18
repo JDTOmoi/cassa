@@ -23,7 +23,7 @@
           </div> --}}
 
           <div class="mb-3">
-            <label for="brand" class = "form-label"> Game</label>
+            <label for="brand" class = "form-label"> Brand</label>
             <select name="brand" id="brand" class="form-select" required>
                 @foreach($brands as $brand)
                 @if(old('brand') == $brand->id)

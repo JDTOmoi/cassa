@@ -25,6 +25,6 @@ class Produk extends Model
     }
 
     public function BrandProduk():BelongsTo{
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class, 'brand','id');
     }
 }
