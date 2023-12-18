@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Newsletter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsletterController extends Controller
 {
@@ -93,8 +94,17 @@ class NewsletterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Newsletter $newsletter)
+    public function destroy(Newsletter $news2)
     {
-        //
+        if($news2->news_image){
+            if(Storage::disk('public')->exists($news2->news_image)){
+                Storage::disk('public')->delete($news2->news_image);
+            }
+
+        }
+
+        $news2->delete();
+
+        return redirect()->route('berita');
     }
 }

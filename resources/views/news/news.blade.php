@@ -56,6 +56,11 @@
         <p>{{$news2->content}}</p>
         <p>read more</p>
         <hr>
+        <form action="{{ route('hapusberita', $news2)}}" method="POST">
+            @method('delete')
+            @csrf
+            <button class = 'btn btn-danger' id="delete" name='delete'>Delete News</button>
+        </form>
 
     </article>
     </div>
