@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsletterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,9 @@ Route::post('/order/tambahorder', [OrderController::class, 'tambahorder'])->midd
 Route::get('/order/editorder/{b}', [OrderController::class, 'editorderview'])->middleware('auth')->name('editorder');
 Route::put('/order/updateorder/{orderedit}', [OrderController::class, 'updateorder'])->middleware('auth')->name('updateord');
 Route::delete('/order/hapusorder/{b}', [OrderController::class, 'hapusorder'])->middleware('auth')->name('hapusorder');
+
+//news
+Route::get('/news',[NewsletterController::class,'index'])->middleware('auth')->name('berita');
 
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 

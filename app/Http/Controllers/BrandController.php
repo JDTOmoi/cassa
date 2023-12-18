@@ -17,8 +17,8 @@ class BrandController extends Controller
             "brand" => $brand
         ]);
     }
-    
-    
+
+
     public function tambahbrandview()
     {
         return view('brand/tambahbrand',[
@@ -37,16 +37,25 @@ class BrandController extends Controller
     }
 
     public function updatebrand(Request $request, Brand $brandedit){
+        $validate=$request->validate([
+            'brand_name'=>'required|max:255'
+        ]);
+
         $brandedit->update([
-            'brand_name' => $request->brand_name
+            'brand_name' => $validate['brand_name']
         ]);
 
         return redirect()->route('daftarbrand');
     }
 
     public function tambahbrand(Request $request){
+
+        $validate=$request->validate([
+            'brand_name'=>'required|unique:brands|max:255'
+        ]);
+
         Brand::create([
-            'brand_name' => $request->brand_name
+            'brand_name' => $validate['brand_name']
         ]);
 
         return redirect()->route('daftarbrand');
