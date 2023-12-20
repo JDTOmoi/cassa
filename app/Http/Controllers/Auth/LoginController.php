@@ -43,12 +43,26 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $member = [
+        $normal = [
             'email' => $request->email,
             'password' => $request->password,
+            'role_id' => 1,
+            'is_active' => '1'
         ];
 
-        if(Auth::attempt($member)){
+        $admin = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 2,
+            'is_active' => '1'
+        ];
+
+        if(Auth::attempt($normal)){
+            $this->isLogin(Auth::id());
+            return redirect()->route('home');
+        }
+        else if(Auth::attempt($admin)){
+            $this->isLogin(Auth::id());
             return redirect()->route('home');
         }
         return redirect()->route('login');

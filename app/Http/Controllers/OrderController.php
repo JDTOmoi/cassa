@@ -16,6 +16,16 @@ class OrderController extends Controller
         ]);
     }
 
+    public function listorderview(){
+        $user = User::where('id',Auth::user()->id)->first();
+        $order = $user->orders()->get();
+
+        return view('order/order',[
+            "activeProduk"=>"active",
+            "order"=>$order
+        ]);
+    }
+
     public function tambahorderview()
     {
         return view('order/tambahorder',[

@@ -7,59 +7,72 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function transactionview()
     {
-        //
+        $transaction = Transaction::all();
+
+        return view('transaction/transaction',[
+            "activeBrand" => "active",
+            "transaction" => $transaction
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function listtransactionview(){
+        $user = User::where('id', Auth::user()->id)->first();
+        $transaction = $user->transactions()->get();
+
+        return view('transaction/transaction',[
+            "activeBrand" => "active",
+            "transaction" => $transaction
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function tambahtransactionview()
     {
-        //
+        return view('brand/tambahbrand',[
+            "activeBrand" => "active"
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Transaction $transaction)
+    public function edittransactionview(Brand $b)
     {
-        //
+        $brandedit = Brand::where('id',$b->id)->first();
+
+        return view('transaction/edittransaction',[
+            "activeBrand" => "active"
+        ],
+        compact('transactionedit'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Transaction $transaction)
-    {
-        //
+    public function updatetransaction(Request $request, Brand $brandedit){
+        $validate=$request->validate([
+            'brand_name'=>'required|max:255'
+        ]);
+
+        $brandedit->update([
+            'brand_name' => $validate['brand_name']
+        ]);
+
+        return redirect()->route('lihattransaksi');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Transaction $transaction)
-    {
-        //
+    public function tambahtransaction(Request $request){
+
+        $validate=$request->validate([
+            'brand_name'=>'required|unique:brands|max:255'
+        ]);
+
+        Brand::create([
+            'brand_name' => $validate['brand_name']
+        ]);
+
+        return redirect()->route('lihattransaksi');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Transaction $transaction)
-    {
-        //
+    public function hapustransaction(Brand $b){
+        $b->delete();
+
+        return redirect()->route('lihattransaksi');
     }
 }

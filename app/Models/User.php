@@ -47,7 +47,23 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function Orders():HasMany{
+    public function orders():HasMany{
         return $this->hasMany(Order::class,'user_id','id');
+    }
+
+    public function transactions():HasMany{
+        return $this->hasMany(Transaction::class, 'user_id', 'id');
+    }
+
+    public function role(): BelongsTo {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+    public function isNormal(): bool {
+        return ($this->role_id == 1);
+    }
+
+    public function isAdmin(): bool {
+        return ($this->role_id == 2);
     }
 }

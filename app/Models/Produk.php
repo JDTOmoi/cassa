@@ -24,6 +24,10 @@ class Produk extends Model
         return $this->hasMany(ProdCata::class, 'produk_id', 'id');
     }
 
+    public function prs(): HasMany{
+        return $this->hasMany(Prodreq::class, 'produk_id', 'id');
+    }
+
     public function BrandProduk():BelongsTo{
         return $this->belongsTo(Brand::class, 'brand','id');
     }
