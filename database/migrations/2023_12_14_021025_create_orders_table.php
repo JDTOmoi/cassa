@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('ord_message');
             $table->string('phone_number');
             $table->enum('status', ['0', '1', '2'])->default('0'); //0 -> not started; 1 -> Pending; 2 -> Completed

@@ -19,11 +19,11 @@ Jl. Raya Sukomanunggal Jaya No.76, Surabaya 60188<br>
                 <h5>Navigation</h5>
 
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="{{route('daftarproduk')}}" class="footer-link nav-link p-0 text-muted">Daftar Produk</a></li>
-                    <li class="nav-item mb-2"><a href="{{route('daftarbrand')}}" class="footer-link nav-link p-0 text-muted">Daftar Brand</a></li>
-                    <li class="nav-item mb-2"><a href="{{route('daftarcategory')}}" class="footer-link nav-link p-0 text-muted">Tambah Kategori</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('daftarproduk')}}" class="footer-link nav-link p-0 text-muted">Produk</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('daftarbrand')}}" class="footer-link nav-link p-0 text-muted">Brand</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('daftarcategory')}}" class="footer-link nav-link p-0 text-muted">Kategori</a></li>
                     <li class="nav-item mb-2"><a href="{{route('berita')}}" class="footer-link nav-link p-0 text-muted">Berita</a></li>
-                    <li class="nav-item mb-2"><a href="{{route('contact')}}" class="footer-link nav-link p-0 text-muted">Contact</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('contact')}}" class="footer-link nav-link p-0 text-muted">Kontak</a></li>
                 </ul>
             </div>
         </div>

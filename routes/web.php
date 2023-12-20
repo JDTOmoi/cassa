@@ -20,9 +20,10 @@ use App\Http\Controllers\NewsletterController;
 |
 */
 
-Route::get('/', function () {
-   return view('welcome');
-})->name('welcome');
+//Route::get('/', function () {
+//   return view('welcome');
+//})->name('welcome');
+Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
 Auth::routes();
 
 //produk
@@ -75,6 +76,6 @@ Route::get('/contact', function () {
 
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 
-Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
+
 
 

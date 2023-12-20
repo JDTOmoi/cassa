@@ -37,7 +37,7 @@
                     <ul class="navbar-nav ms-auto">
                         <ul class="navbar-nav d-md-none">
                             <li class="nav-item {{$activeProduk ?? ''}}">
-                              <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}"> Daftar Produk</a>
+                              <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}">Produk</a>
                             </li>
                             <li class="nav-item {{$activeCategory ?? ''}}">
                               <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('daftarcategory')}}">Kategori</a>
@@ -52,7 +52,7 @@
                               <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
                             </li>
                     </ul>
                         <!-- Authentication Links -->
@@ -99,7 +99,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item {{$activeProduk ?? ''}}">
-                  <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}"> Daftar Produk</a>
+                  <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}">Produk</a>
                 </li>
                 <li class="nav-item {{$activeCategory ?? ''}}">
                   <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('daftarcategory')}}">Kategori</a>
@@ -114,7 +114,7 @@
                   <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
                 </li>
               </ul>
             </div>
