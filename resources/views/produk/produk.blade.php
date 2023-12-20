@@ -27,7 +27,15 @@
     @foreach($produk as $p)
     @php($counter++)
     <tr>
-        <th scope="row">{{$p->image}}</th>
+        <th scope="row">
+            <div style="max-height: 200px; overflow: hidden;">
+            @if($p->image)
+            <img class=" img-fluid " src="{{asset('storage/'.$p->image)}}" alt="{{$p->name}}">
+            @else
+            <img src="{{asset('images/imagenotfound.jpg')}}" alt="{{$p->name}}" class="img-fluid">
+            @endif
+            </div>
+        </th>
         <td>{{$p->name}}</td>
         <td>{{$p->sku}}</td>
         {{-- <td>{{$p->brand}}</td> --}}
