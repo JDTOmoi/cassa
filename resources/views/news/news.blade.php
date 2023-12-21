@@ -11,6 +11,7 @@
         </div>
     </div>
 
+    @if(Auth::user()->isAdmin())
     <div class="container-fluid">
         <div class="row">
             <div class="col"></div>
@@ -23,6 +24,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     {{-- <div class="px-5 py-3 h-20 container">
         <div style="max-height: 200px; overflow: hidden;">
@@ -54,9 +56,10 @@
         <p class="blog-post-meta">{{date('d-M-Y',strtotime($news2->created_at))}}</p>
 
         <p>{{$news2->content}}</p>
-        <p>read more</p>
+        <p><a style="text-decoration: none; color: inherit;" href="{{route('showberita',['title' => $news2->title, 'news2' => $news2])}}">read more</a></p>
         <hr>
 
+        @if(Auth::user()->isAdmin())
         <a href="{{route('editberita',$news2)}}">
             <button class='btn btn-warning my-3' id="edit" name='edit'>Edit Berita</button>
         </a>
@@ -66,6 +69,7 @@
             @csrf
             <button class = 'btn btn-danger' id="delete" name='delete'>Hapus Berita</button>
         </form>
+        @endif
 
     </article>
     </div>

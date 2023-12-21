@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(Auth::user()->isAdmin())
 <div class="ms-3">
 <form method="GET" action="{{route('tambahproduk')}}">
     <button class="btn btn-primary" href="{{route('tambahproduk')}}">
@@ -8,6 +9,7 @@
     </button>
 </form>
 </div>
+@endif
 
 <table class="table mx-3">
     <thead>

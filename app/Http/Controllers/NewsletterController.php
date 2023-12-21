@@ -71,9 +71,15 @@ class NewsletterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Newsletter $newsletter)
+    public function show($title ,Newsletter $news2)
     {
-        //
+
+        // $news = Newsletter::find($news2);
+
+        return view('news/newsdetail',[
+            'activeNews'=>'active',
+            'news'=>$news2
+        ]);
     }
 
     /**
