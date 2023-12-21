@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,14 @@ Route::post('/news/tambahberita',[NewsletterController::class,'store'])->middlew
 Route::get('/news/editberita/{news2}',[NewsletterController::class,'edit'])->middleware('auth')->name('editberita');
 Route::put('/news/editberita/{news2}',[NewsletterController::class,'update'])->middleware('auth')->name('updateberita');
 Route::delete('/news/hapusberita/{news2}',[NewsletterController::class,'destroy'])->middleware('auth')->name('hapusberita');
+
+//transaction
+Route::get('/transaction', [TransactionController::class, 'transactionview'])->middleware('auth')->name('kirimtransaksi');
+Route::get('/transaction/tambahtransaction', [TransactionController::class, 'tambahtransactionview'])->middleware('auth')->name('tambahtransaction');
+Route::post('/transaction/tambahtransaction', [TransactionController::class, 'tambahtransaction'])->middleware('auth')->name('tambahtss');
+Route::get('/transaction/edittransaction/{t}', [TransactionController::class, 'edittransactionview'])->middleware('auth')->name('edittransaction');
+Route::put('/transaction/updatetransaction/{transactionedit}', [TransactionController::class, 'updatetransaction'])->middleware('auth')->name('updatetss');
+Route::delete('/transaction/hapustransaction/{t}', [TransactionController::class, 'hapustransaction'])->middleware('auth')->name('hapustransaction');
 
 Route::get('/contact', function () {
    return view('contact', ['activeContact' => 'active']);

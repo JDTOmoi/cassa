@@ -45,6 +45,9 @@
                             <li class="nav-item {{$activeBrand ?? ''}}">
                               <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('daftarbrand')}}">Brand</a>
                             </li>
+                            <li class="nav-item {{$activeTransaction ?? ''}}">
+                              <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('kirimtransaksi')}}">Send Transaction</a>
+                            </li>
                             <li class="nav-item">
                               <a class="nav-link" href="#">Portofolio</a>
                             </li>
@@ -75,9 +78,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @if(Auth::user()->isNormal())
-
-                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -109,6 +109,9 @@
                 </li>
                 <li class="nav-item {{$activeBrand ?? ''}}">
                   <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('daftarbrand')}}">Brand</a>
+                </li>
+                <li class="nav-item {{$activeTransaction ?? ''}}">
+                  <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('kirimtransaksi')}}">Send Transaction</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Portofolio</a>

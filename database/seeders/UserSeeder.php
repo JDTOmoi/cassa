@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
 
         DB::table('users')->insert(
-            ['name' => 'Test','Email' => 'test@gmail.com','password' => Hash::make('12345678'), 'role_id' => 1, 'is_login'=>'0', 'is_active'=>'0','remember_token'=>null]
+            ['name' => 'Test','Email' => 'test@gmail.com','password' => bcrypt('12345678'), 'role_id' => 2, 'is_login'=>'0', 'is_active'=>'1','remember_token'=>null]
         );
     }
 }

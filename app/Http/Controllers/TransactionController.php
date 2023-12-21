@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -12,7 +15,7 @@ class TransactionController extends Controller
         $transaction = Transaction::all();
 
         return view('transaction/transaction',[
-            "activeBrand" => "active",
+            "activeTransaction" => 'active',
             "transaction" => $transaction
         ]);
     }
@@ -22,7 +25,6 @@ class TransactionController extends Controller
         $transaction = $user->transactions()->get();
 
         return view('transaction/transaction',[
-            "activeBrand" => "active",
             "transaction" => $transaction
         ]);
     }
@@ -30,49 +32,62 @@ class TransactionController extends Controller
 
     public function tambahtransactionview()
     {
-        return view('brand/tambahbrand',[
-            "activeBrand" => "active"
+        $users = User::all();
+
+        return view('transaction/tambahtransaction',[
+            "activeTransaction" => 'active',
+            "users" => $users
         ]);
     }
 
-    public function edittransactionview(Brand $b)
+    public function edittransactionview(Transaction $t)
     {
-        $brandedit = Brand::where('id',$b->id)->first();
-
+        $transactionedit = Transaction::where('id',$t->id)->first();
+        $users = User::all();
         return view('transaction/edittransaction',[
-            "activeBrand" => "active"
+            "activeTransaction" => 'active',
+            "users" => $users
         ],
         compact('transactionedit'));
     }
 
-    public function updatetransaction(Request $request, Brand $brandedit){
+    public function updatetransaction(Request $request, Transaction $transactionedit){
+        
         $validate=$request->validate([
-            'brand_name'=>'required|max:255'
+            'user_id' => 'required',
+            'amount_paid' => 'required|integer',
+            'tips'=>'required|integer'
         ]);
 
-        $brandedit->update([
-            'brand_name' => $validate['brand_name']
+        $transactionedit->update([
+            'user_id' => $validate['user_id'],
+            'amount_paid' => $validate['amount_paid'],
+            'tips'=> $validate['tips']
         ]);
 
-        return redirect()->route('lihattransaksi');
+        return redirect()->route('kirimtransaksi');
     }
 
     public function tambahtransaction(Request $request){
 
         $validate=$request->validate([
-            'brand_name'=>'required|unique:brands|max:255'
+            'user_id' => 'required',
+            'amount_paid' => 'required|integer',
+            'tips'=>'required|integer'
         ]);
 
-        Brand::create([
-            'brand_name' => $validate['brand_name']
+        Transaction::create([
+            'user_id' => $validate['user_id'],
+            'amount_paid' => $validate['amount_paid'],
+            'tips'=> $validate['tips']
         ]);
 
-        return redirect()->route('lihattransaksi');
+        return redirect()->route('kirimtransaksi');
     }
 
-    public function hapustransaction(Brand $b){
-        $b->delete();
+    public function hapustransaction(Transaction $t){
+        $t->delete();
 
-        return redirect()->route('lihattransaksi');
+        return redirect()->route('kirimtransaksi');
     }
 }

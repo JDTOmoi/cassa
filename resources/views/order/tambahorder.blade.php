@@ -2,6 +2,15 @@
 
 @section('content')
 
+@if($errors->any())
+<div class="alert alert-danger mx-3">
+    <ul>
+        @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
 <div class="container mt-5">
 <form action="{{route('tambahord')}}" method="POST">
@@ -22,9 +31,9 @@
             <th class="px-4"></th>
         </tr>
         <tr>
-            <td class="px-4"><input type="text" name="column1[]" required></td>
-            <td class="px-4"><input type="text" name="column2[]" required></td>
-            <td class="px-4"><input type="text" name="column3[]"></td>
+            <td class="px-4"><input type="text" name="produk[]" required></td>
+            <td class="px-4"><input type="text" name="quantity[]" required></td>
+            <td class="px-4"><input type="text" name="notes[]"></td>
             <td><button type="button" onclick="removeRow(this)">Remove</button></td>
         </tr>
     </table>
@@ -37,15 +46,24 @@
     function addRow() {
         var table = document.getElementById("dataTable");
         var newRow = table.insertRow(table.rows.length);
-        var columns = 3; // Number of columns in the table
+        var columns = 3;
 
         for (var i = 0; i < columns; i++) {
             var cell = newRow.insertCell(i);
             cell.classList.add("px-4");
             var input = document.createElement("input");
             input.type = "text";
-            input.name = "column" + (i + 1) + "[]";
-            input.required = true;
+            if (i == 1){
+                input.name = "produk[]";
+                input.required = true;
+            }
+            else if (i == 2){
+                input.name = "quantity[]";
+                input.required = true;
+            }
+            else if (i == 3){
+                input.name = "notes[]";
+            }
             cell.appendChild(input);
         }
 

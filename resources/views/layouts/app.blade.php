@@ -39,12 +39,17 @@
                             <li class="nav-item {{$activeProduk ?? ''}}">
                               <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}">Produk</a>
                             </li>
+                            @if(Auth::user()->isAdmin())
                             <li class="nav-item {{$activeCategory ?? ''}}">
                               <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('daftarcategory')}}">Kategori</a>
                             </li>
                             <li class="nav-item {{$activeBrand ?? ''}}">
                               <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('daftarbrand')}}">Brand</a>
                             </li>
+                            <li class="nav-item {{$activeTransaction ?? ''}}">
+                              <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('kirimtransaksi')}}">Send Transaction</a>
+                            </li>
+                            @endif
                             <li class="nav-item">
                               <a class="nav-link" href="#">Portofolio</a>
                             </li>
@@ -104,12 +109,17 @@
                 <li class="nav-item {{$activeProduk ?? ''}}">
                   <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}"> Daftar Produk</a>
                 </li>
+                @if(Auth::user()->isAdmin())
                 <li class="nav-item {{$activeCategory ?? ''}}">
                   <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('daftarcategory')}}">Kategori</a>
                 </li>
                 <li class="nav-item {{$activeBrand ?? ''}}">
                   <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('daftarbrand')}}">Brand</a>
                 </li>
+                <li class="nav-item {{$activeTransaction ?? ''}}">
+                  <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('kirimtransaksi')}}">Send Transaction</a>
+                </li>
+                @endif
                 <li class="nav-item">
                   <a class="nav-link" href="#">Portofolio</a>
                 </li>

@@ -28,11 +28,6 @@
             <label for="sku" class="form-label">SKU</label>
             <input type="text" class="form-control" id="sku" name="sku" placeholder="SKU">
           </div>
-          {{-- <div class="mb-3">
-            <label for="brand" class="form-label">Brand</label>
-            <input type="text" class="form-control" id="brand" name="brand" placeholder="Brand">
-          </div> --}}
-
           <div class="mb-3">
             <label for="brand" class = "form-label"> Brand</label>
             <select name="brand" id="brand" class="form-select" required>
