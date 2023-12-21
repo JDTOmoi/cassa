@@ -31,9 +31,20 @@
             <th class="px-4"></th>
         </tr>
         <tr>
-            <td class="px-4"><input type="text" name="produk[]" required></td>
-            <td class="px-4"><input type="text" name="quantity[]" required></td>
-            <td class="px-4"><input type="text" name="notes[]"></td>
+            <td class="px-4">
+                <select name="produk_id[]" id="produk_id" class="form-select" required>
+                    @foreach($produks as $produk)
+                    @if(old('produk_id[]') == $produk->id)
+                    <option value="{{$produk->id}}" selected>{{$produk->name}}</option>
+                    @else
+                    <option value="{{$produk->id}}">{{$produk->name}}</option>
+                    @endif
+                    @endforeach
+                </select>
+            </td>
+
+            <td class="px-4"><input type="text" name="quantity[]" class="form-control" required></td>
+            <td class="px-4"><input type="text" name="notes[]" class="form-control" required></td>
             <td><button type="button" onclick="removeRow(this)">Remove</button></td>
         </tr>
     </table>
@@ -51,20 +62,39 @@
         for (var i = 0; i < columns; i++) {
             var cell = newRow.insertCell(i);
             cell.classList.add("px-4");
-            var input = document.createElement("input");
-            input.type = "text";
-            if (i == 1){
-                input.name = "produk[]";
+            
+            if (i == 0){
+                var input = document.createElement("select");
+                input.name = "produk_id[]";
+                var produks = @json($produks);
+                console.log(produks);
                 input.required = true;
+                input.classList.add("form-select");
+                for (var j = 0; j < produks.length; j++) {
+                    var option = document.createElement("option");
+                    option.value = produks[i]['id'];
+                    option.text = produks[i]['name'];
+                    input.add(option);
+                }
+                
+                cell.appendChild(input);
+            }
+            else if (i == 1){
+                var input2 = document.createElement("input");
+                input2.type = "text";
+                input2.name = "quantity[]";
+                input2.classList.add("form-control");
+                input2.required = true;
+                cell.appendChild(input2);
             }
             else if (i == 2){
-                input.name = "quantity[]";
-                input.required = true;
+                var input3 = document.createElement("input");
+                input3.type = "text";
+                input3.name = "notes[]";
+                input3.classList.add("form-control");
+                cell.appendChild(input3);
             }
-            else if (i == 3){
-                input.name = "notes[]";
-            }
-            cell.appendChild(input);
+            
         }
 
         var actionCell = newRow.insertCell(columns);
@@ -80,7 +110,6 @@
     function removeRow(button) {
         var row = button.parentNode.parentNode;
         var inputs = row.getElementsByTagName("input");
-
         // Clear input values
         for (var i = 0; i < inputs.length; i++) {
             inputs[i].value = "";
