@@ -24,7 +24,7 @@ class TransactionController extends Controller
         $user = User::where('id', Auth::user()->id)->first();
         $transaction = $user->transactions()->get();
 
-        return view('transaction/transaction',[
+        return view('transaction/viewtransaction',[
             "transaction" => $transaction
         ]);
     }
