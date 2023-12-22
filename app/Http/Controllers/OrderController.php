@@ -54,12 +54,16 @@ class OrderController extends Controller
 
         $order = Order::create([
             'user_id' => $validate['user_id'],
-            'amount_paid' => $validate['amount_paid'],
-            'tips'=> $validate['tips'],
+            'ord_message' => $validate['ord_message'],
+            'phone_number' => $validate['phone_number'],
             'status'=> '0'
         ]);
 
-        for ($i = 0; $i < $validate['produk_id']->count(); $i++) {
+        $productions = collect($validate['produk_id']);
+        $quants = collect($validate['quantity']);
+        $notes = collect($validate['notes']);
+
+        for ($i = 0; $i < $productions->count(); $i++) {
             Prodreq::create([
                 'produk_id' => $validate['produk_id'][$i],
                 'order_id' => $order->id,
@@ -69,6 +73,6 @@ class OrderController extends Controller
         }
         
 
-        return redirect()->route('kirimtransaksi');
+        return redirect()->route('order');
     }
 }
