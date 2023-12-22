@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -80,6 +81,19 @@ Route::get('/transaction/edittransaction/{t}', [TransactionController::class, 'e
 Route::put('/transaction/updatetransaction/{transactionedit}', [TransactionController::class, 'updatetransaction'])->middleware('auth')->name('updatetss');
 Route::delete('/transaction/hapustransaction/{t}', [TransactionController::class, 'hapustransaction'])->middleware('auth')->name('hapustransaction');
 Route::get('/transaction/viewtransaction',[TransactionController::class, 'listtransactionview'])->middleware('auth')->name('viewtransaction');
+
+    //portfolio
+    Route::get('/portofolio',[PortfolioController::class,'index'])->middleware('auth')->name('portofolio');
+
+    Route::get('/portofolio/tambahportofolio',[PortfolioController::class,'create'])->middleware('auth')->name('tambahport');
+    Route::post('/portofolio/tambahportofolio',[PortfolioController::class,'store'])->middleware('auth')->name('addport');
+    Route::get('/portofolio/editportofolio/{port}',[PortfolioController::class,'edit'])->middleware('auth')->name('editport');
+    Route::put('/portofolio/editportofolio/{port}',[PortfolioController::class,'update'])->middleware('auth')->name('updateport');
+    Route::delete('/portofolio/hapusportofolio/{port}',[PortfolioController::class,'destroy'])->middleware('auth')->name('hapusport');
+
+    Route::get('/portofolio/{title}/{port}',[PortfolioController::class,'show'])->middleware('auth')->name('showport');
+
+
 
 Route::get('/contact', function () {
    return view('contact', ['activeContact' => 'active']);

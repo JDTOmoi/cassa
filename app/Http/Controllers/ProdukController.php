@@ -11,9 +11,13 @@ use Illuminate\Support\Facades\Storage;
 class ProdukController extends Controller
 {
     //
-    public function produkview()
+    public function produkview(Request $request)
     {
-        $produk = Produk::all();
+        if($request->has('search')){
+            $produk = Produk::where('name','like','%'.$request->search.'%')->get();
+        }else{
+            $produk = Produk::paginate(10);
+        }
 
         return view('produk/produk',[
             "activeProduk"=>"active",
@@ -72,7 +76,7 @@ class ProdukController extends Controller
             'description'=>$validate['description'],
         ]);
         }else{
-        $news2->update([
+        $produkedit->update([
             'name'=>$validate['name'],
             'sku'=>$validate['sku'],
             'brand'=>$validate['brand'],
@@ -128,7 +132,7 @@ class ProdukController extends Controller
                 Storage::disk('public')->delete($p->image);
             }
         }
-        
+
         $p->delete();
 
         return redirect()->route('daftarproduk');

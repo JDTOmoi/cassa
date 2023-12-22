@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('port_image')->nullable();
+            $table->string('title')->nullable();
+            $table->longText('content')->nullable();
+            // $table->date('created_at')->nullable();
         });
     }
 
