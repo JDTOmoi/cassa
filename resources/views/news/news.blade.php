@@ -44,14 +44,20 @@
 
     <div class="px-5 py-3 h-20 container">
         <div style="max-height: 200px; overflow: hidden;">
+        <a href="{{route('showberita',['title' => $news2->title, 'news2' => $news2])}}">
         @if($news2->news_image)
         <img class=" img-fluid " src="{{asset('storage/'.$news2->news_image)}}" alt="{{$news2->title}}">
         @else
         <img src="{{asset('images/imagenotfound.jpg')}}" alt="{{$news2->title}}" class="img-fluid">
         @endif
+        </a>
         </div>
         <article class="blog-post">
-        <h2 class="blog-post-title">{{$news2->title}}</h2>
+        <h2  class="blog-post-title">
+            <a style="text-decoration: none; color: inherit;" href="{{route('showberita',['title' => $news2->title, 'news2' => $news2])}}">
+            {{$news2->title}}
+            </a>
+        </h2>
         {{-- <p class="blog-post-meta">{{$news2->created_at->format('d-M-Y')}}</p> --}}
         <p class="blog-post-meta">{{date('d-M-Y',strtotime($news2->created_at))}}</p>
 
