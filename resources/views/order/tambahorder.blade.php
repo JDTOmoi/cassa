@@ -15,6 +15,7 @@
 <div class="container mt-5">
 <form action="{{route('tambahord')}}" method="POST">
     @csrf
+    <input type="hidden" name="user_id" value={{Auth::user()->id}}>
     <div class="mb-3">
             <label for="image" class="form-label">Order Message</label>
             <input type="text" class="form-control" id="ord_message" name="ord_message" placeholder="Order Message">
@@ -43,8 +44,8 @@
                 </select>
             </td>
 
-            <td class="px-4"><input type="text" name="quantity[]" class="form-control" required></td>
-            <td class="px-4"><input type="text" name="notes[]" class="form-control" required></td>
+            <td class="px-4"><input type="number" name="quantity[]" min="1" class="form-control" required></td>
+            <td class="px-4"><input type="text" name="notes[]"  class="form-control"></td>
             <td><button type="button" onclick="removeRow(this)">Remove</button></td>
         </tr>
     </table>
@@ -81,9 +82,14 @@
             }
             else if (i == 1){
                 var input2 = document.createElement("input");
-                input2.type = "text";
+                input2.type = "number";
                 input2.name = "quantity[]";
                 input2.classList.add("form-control");
+                input2.addEventListener("input", function(){
+                    if (parseInt(input2.value < 1)) {
+                        input2.value = 1;
+                    }
+                });
                 input2.required = true;
                 cell.appendChild(input2);
             }
