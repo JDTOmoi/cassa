@@ -24,10 +24,12 @@
                     Cassa Terra
                 </a>
 
+                @auth
                 <form action="{{route('daftarproduk')}}" method="GET" class="form-inline w-25 d-flex gap-2">
                     <input class = "form-control" type="search" name="search" placeholder="Cari Produk">
                     <button type = "submit" class="btn btn-outline-success">Cari</button>
                 </form>
+                @endauth
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
