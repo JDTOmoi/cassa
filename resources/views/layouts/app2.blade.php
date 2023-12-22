@@ -49,7 +49,7 @@
                               <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('kirimtransaksi')}}">Send Transaction</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="#">Portofolio</a>
+                                <a class="nav-link {{$activePort ?? ''}}" href="{{route('portofolio')}}">Portofolio</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
@@ -114,7 +114,7 @@
                   <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('kirimtransaksi')}}">Send Transaction</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Portofolio</a>
+                    <a class="nav-link {{$activePort ?? ''}}" href="{{route('portofolio')}}">Portofolio</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>

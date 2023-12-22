@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Portfolio extends Model
 {
     use HasFactory;
+
+   public $timestamps = false;
+
+   protected $fillable=[
+    'port_image',
+    'title',
+    'content',
+];
+
+
 }
