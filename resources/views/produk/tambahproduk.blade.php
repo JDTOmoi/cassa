@@ -13,7 +13,7 @@
 @endif
 
 <div class="container mt-5">
-    <form action="{{route('tambahpro')}}" method="POST"  enctype="multipart/form-data">
+    <form action="{{route('admin.tambahpro')}}" method="POST"  enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>

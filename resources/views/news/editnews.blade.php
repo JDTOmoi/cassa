@@ -14,7 +14,7 @@
 
 
 <div class="container mt-5">
-<form action="{{route('updateberita', $newsedit)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.updateberita', $newsedit)}}" method="POST" enctype="multipart/form-data">
 @method('put')
 @csrf
 <div class="mb-3">

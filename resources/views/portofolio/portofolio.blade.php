@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-lg-9 col-sm-9 col-xs-8"></div> <!-- Adjusted column classes -->
             <div class="col-lg-3 col-sm-3 col-xs-4 d-flex justify-content-end"> <!-- Adjusted column classes -->
-                <form method="GET" action="{{ route('tambahport') }}" class="px-5 py-3">
+                <form method="GET" action="{{ route('admin.tambahport') }}" class="px-5 py-3">
                     <button class="btn btn-primary">
                         Tambah Portofolio
                     </button>
@@ -84,15 +84,15 @@
         <div class="card-body">
           <h5 class="card-title">{{$port->title}}</h5>
           <p class="card-text">{{$port->content}}</p>
-          <a href="{{route('showport',['title' => $port->title, 'port' => $port])}}" class="btn btn-primary">Read More</a>
+          <a href="{{route('admin.showport',['title' => $port->title, 'port' => $port])}}" class="btn btn-primary">Read More</a>
         </div>
         @if(Auth::user()->isAdmin())
-        <a href="{{ route('editport', $port) }}">
+        <a href="{{ route('admin.editport', $port) }}">
             <button class='btn btn-warning my-2 mx-3' id="edit" name='edit'>Edit Portofolio</button>
         </a>
 
 
-        <form action="{{ route('hapusport', $port)}}" method="POST">
+        <form action="{{ route('admin.hapusport', $port)}}" method="POST">
             @method('delete')
             @csrf
             <button class = 'btn btn-danger mx-3 my-2' id="delete" name='delete'>Hapus Portofolio</button>

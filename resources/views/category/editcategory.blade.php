@@ -13,7 +13,7 @@
 @endif
 
 <div class="container mt-5">
-    <form action="{{route('updatectg', $categoryedit)}}" method="POST">
+    <form action="{{route('admin.updatectg', $categoryedit)}}" method="POST">
         @method('put')
         @csrf
         <div class="mb-3">

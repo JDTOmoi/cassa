@@ -23,7 +23,7 @@
 
 
 <div class="container mt-5">
-<form action="{{route('addport')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.addport')}}" method="POST" enctype="multipart/form-data">
 @csrf
 <div class="mb-3">
     <label for="port_image" class="form-label">Upload Image</label>

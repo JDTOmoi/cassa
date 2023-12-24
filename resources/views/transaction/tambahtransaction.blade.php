@@ -13,7 +13,7 @@
 @endif
 
 <div class="container mt-5">
-    <form action="{{route('tambahtss')}}" method="POST">
+    <form action="{{route('admin.tambahtss')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="user_id" class = "form-label">Send to User</label>

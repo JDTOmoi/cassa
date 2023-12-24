@@ -85,7 +85,7 @@ class ProdukController extends Controller
         ]);
     }
 
-        return redirect()->route('daftarproduk');
+        return redirect()->route('admin.daftarproduk');
     }
 
 
@@ -122,7 +122,7 @@ class ProdukController extends Controller
         ]);
     }
 
-        return redirect()->route('daftarproduk');
+        return redirect()->route('admin.daftarproduk');
 
     }
 
@@ -135,7 +135,7 @@ class ProdukController extends Controller
 
         $p->delete();
 
-        return redirect()->route('daftarproduk');
+        return redirect()->route('admin.daftarproduk');
     }
 
 }

@@ -73,6 +73,6 @@ class OrderController extends Controller
         }
         
 
-        return redirect()->route('order');
+        return redirect()->route('admin.order');
     }
 }

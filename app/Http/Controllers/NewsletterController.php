@@ -65,7 +65,7 @@ class NewsletterController extends Controller
             ]);
         }
 
-        return redirect()->route('berita');
+        return redirect()->route('admin.berita');
     }
 
     /**
@@ -124,7 +124,7 @@ class NewsletterController extends Controller
                 'created_at'=>now(),
             ]);
         }
-        return redirect()->route('berita');
+        return redirect()->route('admin.berita');
     }
 
     /**
@@ -141,6 +141,6 @@ class NewsletterController extends Controller
 
         $news2->delete();
 
-        return redirect()->route('berita');
+        return redirect()->route('admin.berita');
     }
 }

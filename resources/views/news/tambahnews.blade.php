@@ -21,7 +21,7 @@
 
 
 <div class="container mt-5">
-<form action="{{route('addberita')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.addberita')}}" method="POST" enctype="multipart/form-data">
 @csrf
 <div class="mb-3">
     <label for="news_image" class="form-label">Upload Image</label>

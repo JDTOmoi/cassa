@@ -16,8 +16,8 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-2">
-            <form method="GET" action="{{route('tambahberita')}}" class="px-5 py-3">
-                <button class="btn btn-primary" href="{{route('tambahberita')}}">
+            <form method="GET" action="{{route('admin.tambahberita')}}" class="px-5 py-3">
+                <button class="btn btn-primary" href="{{route('admin.tambahberita')}}">
                     Tambah Berita
                 </button>
             </form>
@@ -44,7 +44,7 @@
 
     <div class="px-5 py-3 h-20 container">
         <div style="max-height: 200px; overflow: hidden;">
-        <a href="{{route('showberita',['title' => $news2->title, 'news2' => $news2])}}">
+        <a href="{{route('admin.showberita',['title' => $news2->title, 'news2' => $news2])}}">
         @if($news2->news_image)
         <img class=" img-fluid " src="{{asset('storage/'.$news2->news_image)}}" alt="{{$news2->title}}">
         @else
@@ -54,7 +54,7 @@
         </div>
         <article class="blog-post">
         <h2  class="blog-post-title">
-            <a style="text-decoration: none; color: inherit;" href="{{route('showberita',['title' => $news2->title, 'news2' => $news2])}}">
+            <a style="text-decoration: none; color: inherit;" href="{{route('admin.showberita',['title' => $news2->title, 'news2' => $news2])}}">
             {{$news2->title}}
             </a>
         </h2>
@@ -62,15 +62,15 @@
         <p class="blog-post-meta">{{date('d-M-Y',strtotime($news2->created_at))}}</p>
 
         <p>{{$news2->content}}</p>
-        <p><a style="text-decoration: none; color: inherit;" href="{{route('showberita',['title' => $news2->title, 'news2' => $news2])}}">read more</a></p>
+        <p><a style="text-decoration: none; color: inherit;" href="{{route('admin.showberita',['title' => $news2->title, 'news2' => $news2])}}">read more</a></p>
         <hr>
 
         @if(Auth::user()->isAdmin())
-        <a href="{{route('editberita',$news2)}}">
+        <a href="{{route('admin.editberita',$news2)}}">
             <button class='btn btn-warning my-3' id="edit" name='edit'>Edit Berita</button>
         </a>
 
-        <form action="{{ route('hapusberita', $news2)}}" method="POST">
+        <form action="{{ route('admin.hapusberita', $news2)}}" method="POST">
             @method('delete')
             @csrf
             <button class = 'btn btn-danger' id="delete" name='delete'>Hapus Berita</button>

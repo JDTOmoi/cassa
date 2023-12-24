@@ -13,7 +13,7 @@
 @endif
 
 <div class="container mt-5">
-    <form action="{{route('tambahbrd')}}" method="POST">
+    <form action="{{route('admin.tambahbrd')}}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="brand_name" class="form-label">Nama Merek</label>

@@ -20,7 +20,7 @@
 
 
 <div class="container mt-5">
-<form action="{{route('updateport', $portedit)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.updateport', $portedit)}}" method="POST" enctype="multipart/form-data">
 @method('put')
 @csrf
 <div class="mb-3">

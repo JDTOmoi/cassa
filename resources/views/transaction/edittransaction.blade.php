@@ -13,7 +13,7 @@
 @endif
 
 <div class="container mt-5">
-    <form action="{{route('updatetss', $transactionedit)}}" method="POST">
+    <form action="{{route('admin.updatetss', $transactionedit)}}" method="POST">
         @method('put')
         @csrf
         <div class="mb-3">

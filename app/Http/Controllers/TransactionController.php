@@ -65,7 +65,7 @@ class TransactionController extends Controller
             'tips'=> $validate['tips']
         ]);
 
-        return redirect()->route('kirimtransaksi');
+        return redirect()->route('admin.kirimtransaksi');
     }
 
     public function tambahtransaction(Request $request){
@@ -82,12 +82,12 @@ class TransactionController extends Controller
             'tips'=> $validate['tips']
         ]);
 
-        return redirect()->route('kirimtransaksi');
+        return redirect()->route('admin.kirimtransaksi');
     }
 
     public function hapustransaction(Transaction $t){
         $t->delete();
 
-        return redirect()->route('kirimtransaksi');
+        return redirect()->route('admin.kirimtransaksi');
     }
 }

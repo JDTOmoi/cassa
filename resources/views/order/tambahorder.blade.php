@@ -13,7 +13,7 @@
 @endif
 
 <div class="container mt-5">
-<form action="{{route('tambahord')}}" method="POST">
+<form action="{{route('admin.tambahord')}}" method="POST">
     @csrf
     <input type="hidden" name="user_id" value={{Auth::user()->id}}>
     <div class="mb-3">

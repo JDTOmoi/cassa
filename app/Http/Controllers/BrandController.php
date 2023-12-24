@@ -45,7 +45,7 @@ class BrandController extends Controller
             'brand_name' => $validate['brand_name']
         ]);
 
-        return redirect()->route('daftarbrand');
+        return redirect()->route('admin.daftarbrand');
     }
 
     public function tambahbrand(Request $request){
@@ -58,13 +58,13 @@ class BrandController extends Controller
             'brand_name' => $validate['brand_name']
         ]);
 
-        return redirect()->route('daftarbrand');
+        return redirect()->route('admin.daftarbrand');
     }
 
     public function hapusbrand(Brand $b){
         $b->delete();
 
-        return redirect()->route('daftarbrand');
+        return redirect()->route('admin.daftarbrand');
     }
 
 }

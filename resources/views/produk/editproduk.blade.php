@@ -14,7 +14,7 @@
 
 <div class="container mt-5">
     {{-- {{$produkedit->image}} --}}
-    <form action="{{route('updatepro', $produkedit)}}" method="POST"  enctype="multipart/form-data">
+    <form action="{{route('admin.updatepro', $produkedit)}}" method="POST"  enctype="multipart/form-data">
         @method('put')
         @csrf
         <div class="mb-3">

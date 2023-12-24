@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="ms-3">
-<form method="GET" action="{{route('tambahbrand')}}">
-    <button class="btn btn-primary" href="{{route('tambahbrand')}}">
+<form method="GET" action="{{route('admin.tambahbrand')}}">
+    <button class="btn btn-primary" href="{{route('admin.tambahbrand')}}">
         Daftar Brand
     </button>
 </form>
@@ -27,10 +27,10 @@
         <td>{{$counter}}</td>
         <td>{{$b->brand_name}}</td>
 
-        <td><a href="{{route('editbrand',$b)}}"> <button class = 'btn btn-info' id="edit" name='edit'>Edit Brand</button> </a> </td>
+        <td><a href="{{route('admin.editbrand',$b)}}"> <button class = 'btn btn-info' id="edit" name='edit'>Edit Brand</button> </a> </td>
 
         <td>
-            <form action="{{ route('hapusbrand', $b)}}" method="POST">
+            <form action="{{ route('admin.hapusbrand', $b)}}" method="POST">
                 @method('delete')
                 @csrf
                 <button class = 'btn btn-danger' id="delete" name='delete'>Delete</button>

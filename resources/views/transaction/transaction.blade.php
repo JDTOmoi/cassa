@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="ms-3">
-<form method="GET" action="{{route('tambahtransaction')}}">
-    <button class="btn btn-primary" href="{{route('tambahtransaction')}}">
-        Daftar Brand
+<form method="GET" action="{{route('admin.tambahtransaction')}}">
+    <button class="btn btn-primary" href="{{route('admin.tambahtransaction')}}">
+        Kirim Transaksi
     </button>
 </form>
 </div>
@@ -32,10 +32,10 @@
         <td>{{$t->tips}}</td>
         <td>{{date("d-M-Y H:i",strtotime($t->created_at))}}</td>
 
-        <td><a href="{{route('edittransaction',$t)}}"> <button class = 'btn btn-info' id="edit" name='edit'>Edit</button> </a> </td>
+        <td><a href="{{route('admin.edittransaction',$t)}}"> <button class = 'btn btn-info' id="edit" name='edit'>Edit</button> </a> </td>
 
         <td>
-            <form action="{{ route('hapustransaction', $t)}}" method="POST">
+            <form action="{{ route('admin.hapustransaction', $t)}}" method="POST">
                 @method('delete')
                 @csrf
                 <button class = 'btn btn-danger' id="delete" name='delete'>Delete</button>

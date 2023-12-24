@@ -41,7 +41,7 @@ class CategoryController extends Controller
             'category_name' => $request->category_name
         ]);
 
-        return redirect()->route('daftarcategory');
+        return redirect()->route('admin.daftarcategory');
     }
 
     public function tambahcategory(Request $request){
@@ -49,12 +49,12 @@ class CategoryController extends Controller
             'category_name' => $request->category_name
         ]);
 
-        return redirect()->route('daftarcategory');
+        return redirect()->route('admin.daftarcategory');
     }
 
     public function hapuscategory(Category $c){
         $c->delete();
 
-        return redirect()->route('daftarcategory');
+        return redirect()->route('admin.daftarcategory');
     }
 }

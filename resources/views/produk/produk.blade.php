@@ -3,8 +3,8 @@
 @section('content')
 @if(Auth::user()->isAdmin())
 <div class="ms-3">
-<form method="GET" action="{{route('tambahproduk')}}">
-    <button class="btn btn-primary" href="{{route('tambahproduk')}}">
+<form method="GET" action="{{route('admin.tambahproduk')}}">
+    <button class="btn btn-primary" href="{{route('admin.tambahproduk')}}">
         Tambah Produk
     </button>
 </form>
@@ -45,10 +45,10 @@
         <td>{{$p->tags}}</td>
         <td>{{$p->description}}</td>
 
-        <td><a href="{{route('editproduk',$p)}}"> <button class = 'btn btn-info' id="edit" name='edit'>Edit Produk</button> </a> </td>
+        <td><a href="{{route('admin.editproduk',$p)}}"> <button class = 'btn btn-info' id="edit" name='edit'>Edit Produk</button> </a> </td>
 
         <td>
-            <form action="{{ route('hapusproduk', $p)}}" method="POST">
+            <form action="{{ route('admin.hapusproduk', $p)}}" method="POST">
                 @method('delete')
                 @csrf
                 <button class = 'btn btn-danger' id="delete" name='delete'>Delete</button>

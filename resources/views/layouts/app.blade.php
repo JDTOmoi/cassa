@@ -25,7 +25,7 @@
                 </a>
 
                 @auth
-                <form action="{{route('daftarproduk')}}" method="GET" class="form-inline w-25 d-flex gap-2">
+                <form action="{{route('admin.daftarproduk')}}" method="GET" class="form-inline w-25 d-flex gap-2">
                     <input class = "form-control" type="search" name="search" placeholder="Cari Produk">
                     <button type = "submit" class="btn btn-outline-success">Cari</button>
                 </form>
@@ -45,24 +45,24 @@
                     <ul class="navbar-nav ms-auto">
                         <ul class="navbar-nav d-md-none">
                             <li class="nav-item {{$activeProduk ?? ''}}">
-                              <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}">Produk</a>
+                              <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('admin.daftarproduk')}}">Produk</a>
                             </li>
                             @if(Auth::user()->isAdmin())
                             <li class="nav-item {{$activeCategory ?? ''}}">
-                              <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('daftarcategory')}}">Kategori</a>
+                              <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('admin.daftarcategory')}}">Kategori</a>
                             </li>
                             <li class="nav-item {{$activeBrand ?? ''}}">
-                              <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('daftarbrand')}}">Brand</a>
+                              <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('admin.daftarbrand')}}">Brand</a>
                             </li>
                             <li class="nav-item {{$activeTransaction ?? ''}}">
-                              <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('kirimtransaksi')}}">Send Transaction</a>
+                              <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('admin.kirimtransaksi')}}">Send Transaction</a>
                             </li>
                             @endif
                             <li class="nav-item">
-                              <a class="nav-link {{$activePort ?? ''}}" href="{{route('portofolio')}}">Portofolio</a>
+                              <a class="nav-link {{$activePort ?? ''}}" href="{{route('admin.portofolio')}}">Portofolio</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
+                              <a class="nav-link {{$activeNews ?? ''}}" href="{{route('admin.berita')}}">Berita</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
@@ -88,9 +88,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    @if(Auth::user()->isNormal())
-
-                                    @endif
+                                    <a class="dropdown-item" href="{{route('vieworder')}}">View Orders</a>
+                                    <a class="dropdown-item" href="{{route('viewtransaction')}}">View Transaction Records</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -115,24 +114,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item {{$activeProduk ?? ''}}">
-                  <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('daftarproduk')}}"> Daftar Produk</a>
+                  <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('admin.daftarproduk')}}"> Daftar Produk</a>
                 </li>
                 @if(Auth::user()->isAdmin())
                 <li class="nav-item {{$activeCategory ?? ''}}">
-                  <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('daftarcategory')}}">Kategori</a>
+                  <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('admin.daftarcategory')}}">Kategori</a>
                 </li>
                 <li class="nav-item {{$activeBrand ?? ''}}">
-                  <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('daftarbrand')}}">Brand</a>
+                  <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('admin.daftarbrand')}}">Brand</a>
                 </li>
                 <li class="nav-item {{$activeTransaction ?? ''}}">
-                  <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('kirimtransaksi')}}">Send Transaction</a>
+                  <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('admin.kirimtransaksi')}}">Send Transaction</a>
                 </li>
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link {{$activePort ?? ''}}" href="{{route('portofolio')}}">Portofolio</a>
+                    <a class="nav-link {{$activePort ?? ''}}" href="{{route('admin.portofolio')}}">Portofolio</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
+                  <a class="nav-link {{$activeNews ?? ''}}" href="{{route('admin.berita')}}">Berita</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>

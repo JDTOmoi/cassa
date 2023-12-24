@@ -58,7 +58,7 @@ class PortfolioController extends Controller
             ]);
         }
 
-        return redirect()->route('portofolio');
+        return redirect()->route('admin.portofolio');
     }
 
     /**
@@ -112,7 +112,7 @@ class PortfolioController extends Controller
                 'content'=>$validatedData['content'],
             ]);
         }
-        return redirect()->route('portofolio');
+        return redirect()->route('admin.portofolio');
     }
 
     /**
@@ -129,6 +129,6 @@ class PortfolioController extends Controller
 
         $port->delete();
 
-        return redirect()->route('portofolio');
+        return redirect()->route('admin.portofolio');
     }
 }
