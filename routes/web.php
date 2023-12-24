@@ -25,9 +25,8 @@ use App\Http\Controllers\TransactionController;
 //Route::get('/', function () {
 //   return view('welcome');
 //})->name('welcome');
-Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
 Auth::routes();
-
+Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
 //produk
 
 Route::get('/produk', [ProdukController::class, 'produkview'])->middleware('auth')->name('daftarproduk');
