@@ -26,7 +26,7 @@
                 </a>
 
                 @auth
-                <form action="{{route('admin.daftarproduk')}}" method="GET" class="form-inline w-25 d-flex gap-2">
+                <form action="{{route('produk')}}" method="GET" class="form-inline w-25 d-flex gap-2">
                     <input class = "form-control" type="search" name="search" placeholder="Cari Produk">
                     <button type = "submit" class="btn btn-outline-success">Cari</button>
                 </form>

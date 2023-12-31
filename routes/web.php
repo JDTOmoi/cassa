@@ -30,7 +30,7 @@ use App\Http\Controllers\User\UserPortfolioController;
 //   return view('welcome');
 //})->name('welcome');
 Auth::routes();
-Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home'); //TODO: When homepage is made, take away middleware.
+Route::get('/', [HomeController::class, 'index'])->name('home');
 //produk
 
 Route::group([
