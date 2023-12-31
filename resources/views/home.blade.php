@@ -2,7 +2,8 @@
 
 @section('content')
 
-<div class="container">
+
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -20,5 +21,45 @@
             </div>
         </div>
     </div>
+</div> --}}
+
+<div class="container">
+    <div class="row justify-content-center mx-3 my-3">
+        <div class="col-md-8">
+            <h2>Cassa Terra</h2>
+            <h4>Festo Authorized Distributor</h4>
+            <p>For Industrial Pneumatic Automation</p>
+        </div>
+        <div class="col-md-2">
+            <img class="img-fluid" src="{{asset('storage/images/153053-Push-in-L-fitting-QSL-3-8-12-2.png')}}" alt="Mesin">
+        </div>
+        <div class="col-md-2">
+            <img class="img-fluid" src="{{asset('storage/images/vuvg.fw-1.png')}}" alt="Mesin">
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid px-5" style="background-color:rgb(227, 227, 227)">
+    <div class="row justify-content-center">
+        <h2 class="my-4">Lihat per Kategori</h2>
+    </div>
+
+    <div class="row justify-content-center">
+    @foreach ($produk as $p)
+
+
+
+    <div class="card mx-3 my-3 hover-shadow" style="width: 18rem;">
+        <div class="bg-image hover-zoom">
+        <img class="card-img-top" src="{{asset('storage/'.$p->image)}}" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <p class="card-text hover-blue">{{$p->name}}</p>
+        </div>
+      </div>
+      @endforeach
+
+    </div>
+
 </div>
 @endsection
