@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -46,10 +47,14 @@
     <div class="row justify-content-center">
     @foreach ($produk as $p)
 
-    <div class="card  mx-3 my-3" style="width: 18rem;">
+
+
+    <div class="card mx-3 my-3 hover-shadow" style="width: 18rem;">
+        <div class="bg-image hover-zoom">
         <img class="card-img-top" src="{{asset('storage/'.$p->image)}}" alt="Card image cap">
+        </div>
         <div class="card-body">
-          <p class="card-text">{{$p->name}}</p>
+          <p class="card-text hover-blue">{{$p->name}}</p>
         </div>
       </div>
       @endforeach
