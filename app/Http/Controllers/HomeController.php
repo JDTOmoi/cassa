@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,8 +22,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        if($request->has('search')){
+            $produk = Produk::where('name','like','%'.$request->search.'%')->get();
+        }else{
+            $produk = Produk::paginate(10);
+        }
+        return view('home',["produk"=>$produk]);
     }
 }
