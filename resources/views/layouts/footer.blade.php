@@ -17,13 +17,20 @@
                 <h5>Navigation</h5>
 
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="{{route('admin.daftarproduk')}}" class="footer-link nav-link p-0 text-muted">Produk</a></li>
                     @if(Auth::user()->isAdmin())
+                    <li class="nav-item mb-2"><a href="{{route('admin.daftarproduk')}}" class="footer-link nav-link p-0 text-muted">Produk</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.daftarbrand')}}" class="footer-link nav-link p-0 text-muted">Brand</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.daftarcategory')}}" class="footer-link nav-link p-0 text-muted">Kategori</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('tambahorder')}}" class="footer-link nav-link p-0 text-muted">Order</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.kirimtransaksi')}}" class="footer-link nav-link p-0 text-muted">Send Transaction</a></li>
-                    @endif
+                    <li class="nav-item mb-2"><a href="{{route('admin.portofolio')}}" class="footer-link nav-link p-0 text-muted">Portofolio</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.berita')}}" class="footer-link nav-link p-0 text-muted">Berita</a></li>
+                    @else
+                    <li class="nav-item mb-2"><a href="{{route('produk')}}" class="footer-link nav-link p-0 text-muted">Produk</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('tambahorder')}}" class="footer-link nav-link p-0 text-muted">Order</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('portofolio')}}" class="footer-link nav-link p-0 text-muted">Portofolio</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('berita')}}" class="footer-link nav-link p-0 text-muted">Berita</a></li>
+                    @endif
                     <li class="nav-item mb-2"><a href="{{route('contact')}}" class="footer-link nav-link p-0 text-muted">Kontak</a></li>
                 </ul>
             </div>

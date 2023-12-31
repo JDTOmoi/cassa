@@ -13,7 +13,7 @@
 <table class="table mx-3">
     <thead>
       <tr>
-        <th scope="col">No</th>
+        <th scope="col">Transaction ID</th>
         <th scope="col">User ID</th>
         <th scope="col">Amount Paid</th>
         <th scope="col">Tips</th>

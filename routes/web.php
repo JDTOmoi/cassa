@@ -7,9 +7,13 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\User\UserOrderController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\User\UserProdukController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\User\UserNewsletterController;
+use App\Http\Controllers\User\UserPortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +74,6 @@ Route::group([
     
     //news
     Route::get('/news',[NewsletterController::class,'index'])->name('berita');
-    Route::get('/news/{title}/{news2}',[NewsletterController::class,'show'])->name('showberita');
     Route::get('/news/tambahberita',[NewsletterController::class,'create'])->name('tambahberita');
     Route::post('/news/tambahberita',[NewsletterController::class,'store'])->name('addberita');
     Route::get('/news/editberita/{news2}',[NewsletterController::class,'edit'])->name('editberita');
@@ -96,8 +99,14 @@ Route::group([
     Route::get('/portofolio/{title}/{port}',[PortfolioController::class,'show'])->name('showport');
 });
 
-
-Route::get('/order/vieworder', [OrderController::class, 'listorderview'])->middleware('auth')->name('vieworder');
+Route::get('/produk', [UserProdukController::class, 'produkview'])->name('produk');
+Route::get('/portofolio',[UserPortfolioController::class,'index'])->name('portofolio');
+Route::get('/portofolio/{title}/{port}',[UserPortfolioController::class,'show'])->name('showport');
+Route::get('/news',[UserNewsletterController::class,'index'])->name('berita');
+Route::get('/news/{title}/{news2}',[UserNewsletterController::class,'show'])->name('showberita');
+Route::get('/order/vieworder', [UserOrderController::class, 'listorderview'])->middleware('auth')->name('vieworder');
+Route::get('/order/tambahorder', [UserOrderController::class, 'tambahorderview'])->middleware('auth')->name('tambahorder');
+Route::post('/order/tambahorder', [UserOrderController::class, 'tambahorder'])->middleware('auth')->name('tambahord');
 Route::get('/transaction/viewtransaction',[TransactionController::class, 'listtransactionview'])->middleware('auth')->name('viewtransaction');
 
 Route::get('/contact', function () {

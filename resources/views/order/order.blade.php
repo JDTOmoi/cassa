@@ -5,7 +5,7 @@
 <table class="table mx-3">
     <thead>
       <tr>
-        <th scope="col">No</th>
+        <th scope="col">Order ID</th>
         <th scope="col">User ID</th>
         <th scope="col">Order Message</th>
         <th scope="col">Nomor Telpon</th>
@@ -42,11 +42,13 @@
         </td>
         <td>{{date("d-M-Y H:i",strtotime($o->created_at))}}</td>
         <td>
+            @if($o->status == 0)
             <form action="{{ route('admin.hapusorder', $o)}}" method="POST">
                 @method('delete')
                 @csrf
                 <button class = 'btn btn-danger' id="delete" name='delete'>Cancel</button>
             </form>
+            @endif
         </td>
 
     </tr>
