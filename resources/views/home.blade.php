@@ -39,7 +39,7 @@
 
     </div>
 </div>
-<div class="container-fluid px-5" style="background-color:rgb(227, 227, 227)">
+<div class="container-fluid px-5 text-center" style="background-color:rgb(227, 227, 227)">
     <div class="row justify-content-center">
         <h2 class="my-4">Lihat per Kategori</h2>
     </div>
@@ -62,7 +62,7 @@
     </div>
 
 </div>
-<div class="container-fluid px-5">
+<div class="container-fluid px-5 text-center">
     <h2 class="mx-auto my-4">Merek-merek yang disediakan</h2>
 
     <div class="row justify-content-center">

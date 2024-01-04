@@ -3,7 +3,7 @@
         
         <div class="d-flex justify-content-evenly row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 border-top mx-auto">
             
-            <div class="col mb-3">
+            <div class="col mb-3 text-center">
             <h5>Contact info</h5>
             <p>
             (031) 99141069<br>

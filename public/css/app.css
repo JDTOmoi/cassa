@@ -19,3 +19,9 @@
 .hover-blue:hover{
     color:rgb(62, 75, 215);
 }
+
+table.scrollable{
+    overflow-x: auto;
+    width: 100%;
+    border-collapse: collapse;
+}
