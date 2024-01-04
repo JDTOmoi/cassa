@@ -44,6 +44,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <ul class="navbar-nav d-md-none">
+                          @auth
                             <li class="nav-item {{$activeProduk ?? ''}}">
                               <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('admin.daftarproduk')}}">Produk</a>
                             </li>
@@ -65,6 +66,7 @@
                             <li class="nav-item">
                             <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
                             </li>
+                          @endauth
                     </ul>
                         <!-- Authentication Links -->
                         @guest
@@ -111,6 +113,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
+                @auth
                 <li class="nav-item {{$activeProduk ?? ''}}">
                   <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('admin.daftarproduk')}}">Produk</a>
                 </li>
@@ -132,6 +135,7 @@
                 <li class="nav-item">
                 <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
                 </li>
+                @endauth
               </ul>
             </div>
           </nav>
