@@ -10,7 +10,8 @@
 </form>
 </div>
 
-<table class="scrollable table mx-3">
+<div class="table-responsive">
+<table class="table mx-3">
     <thead>
       <tr>
         <th scope="col">Transaction ID</th>
@@ -48,5 +49,5 @@
 
     </tbody>
 </table>
-
+</div>
 @endsection

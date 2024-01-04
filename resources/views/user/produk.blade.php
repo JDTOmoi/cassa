@@ -2,7 +2,7 @@
 
 @section('content')
 
-<table class="scrollable table mx-3">
+<table class="table mx-3">
     <thead>
       <tr>
         <th scope="col">Image</th>
