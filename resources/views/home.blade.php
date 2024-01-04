@@ -62,4 +62,12 @@
     </div>
 
 </div>
+<div class="container-fluid px-5">
+    <h2 class="mx-auto my-4">Merek-merek yang disediakan</h2>
+
+    <div class="row justify-content-center">
+        <img src="https://drive.google.com/uc?export=view&id=1NKpezmUCzCnRvM7ITvDajD2o26GLo1gS" style="width: 256px;"></img>
+        <img src="https://drive.google.com/uc?export=view&id=1x2V8pYST3l7RezoOGYMnmsopxmmJfK8R" style="width: 256px;"></img>
+    <div>
+</div>
 @endsection
