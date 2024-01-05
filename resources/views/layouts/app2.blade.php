@@ -44,29 +44,46 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <ul class="navbar-nav d-md-none">
-                          @auth
+                          @if(Auth::user()->isAdmin())
                             <li class="nav-item {{$activeProduk ?? ''}}">
                               <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('admin.daftarproduk')}}">Produk</a>
-                            </li>
-                            <li class="nav-item {{$activeCategory ?? ''}}">
-                              <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('admin.daftarcategory')}}">Kategori</a>
                             </li>
                             <li class="nav-item {{$activeBrand ?? ''}}">
                               <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('admin.daftarbrand')}}">Brand</a>
                             </li>
+                            <li class="nav-item {{$activeCategory ?? ''}}">
+                              <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('admin.daftarcategory')}}">Kategori</a>
+                            </li>
                             <li class="nav-item {{$activeTransaction ?? ''}}">
                               <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('admin.kirimtransaksi')}}">Send Transaction</a>
                             </li>
+                            <li class="nav-item {{$activeOrder ?? ''}}">
+                              <a class="nav-link {{$activeOrder ?? ''}}" href="{{route('tambahorder')}}">Order</a>
+                            </li>
                             <li class="nav-item">
-                                <a class="nav-link {{$activePort ?? ''}}" href="{{route('admin.portofolio')}}">Portofolio</a>
+                              <a class="nav-link {{$activePort ?? ''}}" href="{{route('admin.portofolio')}}">Portofolio</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link {{$activeNews ?? ''}}" href="{{route('admin.berita')}}">Berita</a>
                             </li>
-                            <li class="nav-item">
-                            <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
+                            
+                          @else
+                            <li class="nav-item {{$activeProduk ?? ''}}">
+                              <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('produk')}}">Produk</a>
                             </li>
-                          @endauth
+                            <li class="nav-item {{$activeOrder ?? ''}}">
+                              <a class="nav-link {{$activeOrder ?? ''}}" href="{{route('tambahorder')}}">Order</a>
+                            </li>
+                            <li class="nav-item {{$activePort ?? ''}}">
+                              <a class="nav-link {{$activePort ?? ''}}" href="{{route('portofolio')}}">Portofolio</a>
+                            </li>
+                            <li class="nav-item {{$activeNews ?? ''}}">
+                              <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
+                            </li>
+                          @endif
+                          <li class="nav-item">
+                            <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
+                          </li>
                     </ul>
                         <!-- Authentication Links -->
                         @guest
@@ -113,29 +130,46 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-                @auth
+                @if(Auth::user()->isAdmin())
                 <li class="nav-item {{$activeProduk ?? ''}}">
                   <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('admin.daftarproduk')}}">Produk</a>
-                </li>
-                <li class="nav-item {{$activeCategory ?? ''}}">
-                  <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('admin.daftarcategory')}}">Kategori</a>
                 </li>
                 <li class="nav-item {{$activeBrand ?? ''}}">
                   <a class="nav-link {{$activeBrand ?? ''}}" href="{{route('admin.daftarbrand')}}">Brand</a>
                 </li>
+                <li class="nav-item {{$activeCategory ?? ''}}">
+                  <a class="nav-link {{$activeCategory ?? ''}}" href="{{route('admin.daftarcategory')}}">Kategori</a>
+                </li>
                 <li class="nav-item {{$activeTransaction ?? ''}}">
                   <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('admin.kirimtransaksi')}}">Send Transaction</a>
                 </li>
+                <li class="nav-item {{$activeOrder ?? ''}}">
+                  <a class="nav-link {{$activeOrder ?? ''}}" href="{{route('tambahorder')}}">Order</a>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link {{$activePort ?? ''}}" href="{{route('admin.portofolio')}}">Portofolio</a>
+                  <a class="nav-link {{$activePort ?? ''}}" href="{{route('admin.portofolio')}}">Portofolio</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link {{$activeNews ?? ''}}" href="{{route('admin.berita')}}">Berita</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
+                
+              @else
+                <li class="nav-item {{$activeProduk ?? ''}}">
+                  <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('produk')}}">Produk</a>
                 </li>
-                @endauth
+                <li class="nav-item {{$activeOrder ?? ''}}">
+                  <a class="nav-link {{$activeOrder ?? ''}}" href="{{route('tambahorder')}}">Order</a>
+                </li>
+                <li class="nav-item {{$activePort ?? ''}}">
+                  <a class="nav-link {{$activePort ?? ''}}" href="{{route('portofolio')}}">Portofolio</a>
+                </li>
+                <li class="nav-item {{$activeNews ?? ''}}">
+                  <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
+                </li>
+              @endif
+              <li class="nav-item">
+                <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
+              </li>
               </ul>
             </div>
           </nav>

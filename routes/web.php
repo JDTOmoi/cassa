@@ -14,6 +14,8 @@ use App\Http\Controllers\User\UserProdukController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\User\UserNewsletterController;
 use App\Http\Controllers\User\UserPortfolioController;
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,15 +31,17 @@ use App\Http\Controllers\User\UserPortfolioController;
 //Route::get('/', function () {
 //   return view('welcome');
 //})->name('welcome');
-Auth::routes();
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
-//produk
+
+Auth::routes(['verify' => true]);
 
 Route::group([
     'middleware' => 'admin',
     'prefix' => 'admin',
     'as' => 'admin.'
 ], function() {
+    //produk
     Route::get('/produk', [ProdukController::class, 'produkview'])->name('daftarproduk');
     Route::get('/produk/tambahproduk', [ProdukController::class, 'tambahprodukview'])->name('tambahproduk');
     Route::post('/produk/tambahproduk', [ProdukController::class, 'tambahproduk'])->name('tambahpro');
@@ -104,14 +108,13 @@ Route::get('/portofolio',[UserPortfolioController::class,'index'])->name('portof
 Route::get('/portofolio/{title}/{port}',[UserPortfolioController::class,'show'])->name('showport');
 Route::get('/news',[UserNewsletterController::class,'index'])->name('berita');
 Route::get('/news/{title}/{news2}',[UserNewsletterController::class,'show'])->name('showberita');
-Route::get('/order/vieworder', [UserOrderController::class, 'listorderview'])->middleware('auth')->name('vieworder');
-Route::get('/order/tambahorder', [UserOrderController::class, 'tambahorderview'])->middleware('auth')->name('tambahorder');
-Route::post('/order/tambahorder', [UserOrderController::class, 'tambahorder'])->middleware('auth')->name('tambahord');
-Route::get('/transaction/viewtransaction',[TransactionController::class, 'listtransactionview'])->middleware('auth')->name('viewtransaction');
-
+Route::get('/order/vieworder', [UserOrderController::class, 'listorderview'])->middleware('verified')->name('vieworder');
+Route::get('/order/tambahorder', [UserOrderController::class, 'tambahorderview'])->middleware('verified')->name('tambahorder');
+Route::post('/order/tambahorder', [UserOrderController::class, 'tambahorder'])->middleware('verified')->name('tambahord');
+Route::get('/transaction/viewtransaction',[TransactionController::class, 'listtransactionview'])->middleware('verified')->name('viewtransaction');
 Route::get('/contact', function () {
-   return view('contact', ['activeContact' => 'active']);
-})->name('contact');
+    return view('contact', ['activeContact' => 'active']);
+ })->name('contact');
 
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 
