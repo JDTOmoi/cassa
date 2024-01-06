@@ -33,6 +33,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 //})->name('welcome');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home1');
 
 Auth::routes(['verify' => true]);
 
