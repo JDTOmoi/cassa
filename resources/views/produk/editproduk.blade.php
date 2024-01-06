@@ -52,6 +52,19 @@
             </select>
             </div>
 
+            <div class="mb-3">
+                <label for="kategori" class = "form-label">Kategori</label>
+                <select name="kategori" id="brand" class="form-select" required>
+                    @foreach($kategori as $k)
+                    @if(old('kategori') == $k->id)
+                    <option value="{{$kategori2->id}}" selected>{{$kategori2->category_name}}</option>
+                    @else
+                    <option value="{{$k->id}}">{{$k->category_name}}</option>
+                    @endif
+                    @endforeach
+                </select>
+            </div>
+
           <div class="mb-3">
             <label for="tags" class="form-label">Tags</label>
             <input type="text" class="form-control" id="tags" name="tags" placeholder="Tags" value="{{$produkedit->tags}}">

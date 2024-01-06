@@ -50,13 +50,16 @@
 
 
     <div class="card mx-3 my-3 hover-shadow" style="width: 18rem;">
+        <a href="{{route('detailproduk',$p)}}" style="text-decoration: none; color:black;">
         <div class="bg-image hover-zoom">
         <img class="card-img-top" src="{{asset('storage/'.$p->image)}}" alt="Card image cap">
         </div>
         <div class="card-body">
-          <p class="card-text hover-blue">{{$p->name}}</p>
+          <p class="card-text hover-blue" >{{$p->name}}</p>
         </div>
+        </a>
       </div>
+
       @endforeach
 
     </div>

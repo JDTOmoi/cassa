@@ -44,7 +44,20 @@
                 @endif
                 @endforeach
             </select>
-            </div>
+         </div>
+
+         <div class="mb-3">
+            <label for="kategori" class = "form-label">Kategori</label>
+            <select name="kategori" id="kategori" class="form-select" required>
+                @foreach($kategori as $k)
+                @if(old('kategori') == $k->id)
+                <option value="{{$k->id}}" selected>{{$k->category_name}}</option>
+                @else
+                <option value="{{$k->id}}">{{$k->category_name}}</option>
+                @endif
+                @endforeach
+            </select>
+         </div>
 
           <div class="mb-3">
             <label for="tags" class="form-label">Tags</label>

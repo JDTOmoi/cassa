@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Produk;
+use App\Models\Category;
+use App\Models\ProdCata;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -28,9 +30,11 @@ class ProdukController extends Controller
     public function tambahprodukview()
     {
         $brands = Brand::all();
+        $kategori = Category::all();
         return view('produk/tambahproduk',[
             "activeProduk"=>"active",
-            "brands"=>$brands
+            "brands"=>$brands,
+            "kategori"=>$kategori
         ]);
     }
 
@@ -40,12 +44,18 @@ class ProdukController extends Controller
 
         $brands = Brand::all();
 
+        $kategori = Category::all();
+
+        $lastProdCatas = $p->pcs()->latest()->first();
+        if ($lastProdCatas) {
+            $kategori2 = $lastProdCatas->category();
+        }
 
         return view('produk/editproduk',
         [
             "activeProduk"=>"active",
         ],
-        compact('produkedit','brands'));
+        compact('produkedit','brands','kategori','kategori2'));
     }
 
 
@@ -57,6 +67,7 @@ class ProdukController extends Controller
             'brand'=>'required',
             'tags'=>'required|max:255',
             'description'=>'',
+            'kategori'=>''
 
         ]);
 
@@ -85,6 +96,12 @@ class ProdukController extends Controller
         ]);
     }
 
+        $produkedit->pcs()->latest()->update([
+            'produk_id'=>$produkedit->id,
+            'category_id'=>$request->kategori
+        ]);
+
+
         return redirect()->route('admin.daftarproduk');
     }
 
@@ -96,6 +113,7 @@ class ProdukController extends Controller
             'name'=>'required|max:255',
             'sku'=>'required|max:255',
             'brand'=>'required',
+            'kategori'=>'required',
             'tags'=>'required|max:255',
             'description'=>'',
 
@@ -104,7 +122,7 @@ class ProdukController extends Controller
         if($request->file('image')){
             $validate['image'] = $request->file('image')->store('images',['disk'=>'public']);
 
-        produk::create([
+        $newProduct = produk::create([
             'image'=>$validate['image'],
             'name'=>$validate['name'],
             'sku'=>$validate['sku'],
@@ -112,13 +130,21 @@ class ProdukController extends Controller
             'tags'=>$validate['tags'],
             'description'=>$validate['description'],
         ]);
+
         }else{
-        produk::create([
+            $newProduct = produk::create([
             'name'=>$validate['name'],
             'sku'=>$validate['sku'],
             'brand'=>$validate['brand'],
             'tags'=>$validate['tags'],
             'description'=>$validate['description'],
+        ]);
+    }
+
+    if($newProduct){
+        ProdCata::create([
+            'produk_id'=>$newProduct->id,
+            'category_id'=>$request->kategori,
         ]);
     }
 
@@ -127,6 +153,10 @@ class ProdukController extends Controller
     }
 
     public function hapusproduk(Produk $p){
+
+        $p->pcs()->delete();
+
+
         if($p->image){
             if(Storage::disk('public')->exists($p->image)){
                 Storage::disk('public')->delete($p->image);
@@ -137,5 +167,20 @@ class ProdukController extends Controller
 
         return redirect()->route('admin.daftarproduk');
     }
+
+    public function detailproduk(Produk $p){
+        $produk = Produk::where('id',$p->id)->first();
+
+        $brand = $p->BrandProduk();
+
+        return view('produk/detailproduk',
+        [
+            "activeProduk"=>"active",
+        ],
+        compact('produk','brand'));
+
+    }
+
+
 
 }
