@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('headstrings')
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+@endsection
+
 @section('content')
 
 @if($errors->any())
@@ -46,83 +53,91 @@
 
             <td class="px-4"><input type="number" name="quantity[]" min="1" class="form-control" required></td>
             <td class="px-4"><input type="text" name="notes[]"  class="form-control"></td>
-            <td><button type="button" onclick="removeRow(this)">Remove</button></td>
+            <td><button type="button" id="removeButton">Remove</button></td>
         </tr>
     </table>
-    <button type="button" onclick="addRow()">Add Row</button>
+    <button type="button" id="addButton">Add Row</button>
     <button type="submit">Submit</button>
 </form>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <script>
+
+    $(document).ready(function () {
+        // Attach addRow function to the "Add Row" button
+        $("#addButton").on("click", function () {
+            addRow();
+        });
+
+        // Attach removeRow function to the "Remove" button (event delegation for dynamically added buttons)
+        $("#removeButton").on("click", "button", function () {
+            removeRow($(this));
+        });
+    });
+
     function addRow() {
-        var table = document.getElementById("dataTable");
-        var newRow = table.insertRow(table.rows.length);
+        var table = $("#dataTable");
+        var newRow = $("<tr>").appendTo(table);
         var columns = 3;
 
         for (var i = 0; i < columns; i++) {
-            var cell = newRow.insertCell(i);
-            cell.classList.add("px-4");
-            
-            if (i == 0){
-                var input = document.createElement("select");
-                input.name = "produk_id[]";
-                var produks = @json($produks);
-                console.log(produks);
-                input.required = true;
-                input.classList.add("form-select");
-                for (var j = 0; j < produks.length; j++) {
-                    var option = document.createElement("option");
-                    option.value = produks[i]['id'];
-                    option.text = produks[i]['name'];
-                    input.add(option);
-                }
-                
-                cell.appendChild(input);
-            }
-            else if (i == 1){
-                var input2 = document.createElement("input");
-                input2.type = "number";
-                input2.name = "quantity[]";
-                input2.classList.add("form-control");
-                input2.addEventListener("input", function(){
-                    if (parseInt(input2.value < 1)) {
-                        input2.value = 1;
-                    }
+            var cell = $("<td>").addClass("px-4").appendTo(newRow);
+
+            if (i == 0) {
+                var input = $("<select>")
+                    .attr("name", "produk_id[]")
+                    .addClass("form-select")
+                    .prop("required", true);
+
+                var produks = <?= json_encode($produks); ?>;
+                $.each(produks, function (index, value) {
+                    var option = $("<option>")
+                        .val(value.id)
+                        .text(value.name);
+                    input.append(option);
                 });
-                input2.required = true;
-                cell.appendChild(input2);
+
+                cell.append(input);
+            } else if (i == 1) {
+                var input2 = $("<input>")
+                    .attr("type", "number")
+                    .attr("name", "quantity[]")
+                    .addClass("form-control")
+                    .on("input", function () {
+                        if (parseInt(input2.val()) < 1) {
+                            input2.val(1);
+                        }
+                    })
+                    .prop("required", true);
+                cell.append(input2);
+            } else if (i == 2) {
+                var input3 = $("<input>")
+                    .attr("type", "text")
+                    .attr("name", "notes[]")
+                    .addClass("form-control");
+                cell.append(input3);
             }
-            else if (i == 2){
-                var input3 = document.createElement("input");
-                input3.type = "text";
-                input3.name = "notes[]";
-                input3.classList.add("form-control");
-                cell.appendChild(input3);
-            }
-            
         }
 
-        var actionCell = newRow.insertCell(columns);
-        var removeButton = document.createElement("button");
-        removeButton.type = "button";
-        removeButton.textContent = "Remove";
-        removeButton.onclick = function () {
-            removeRow(this);
-        };
-        actionCell.appendChild(removeButton);
+        var actionCell = $("<td>").appendTo(newRow);
+        var removeButton = $("<button>")
+            .attr("type", "button")
+            .text("Remove")
+            .on("click", function () {
+                removeRow($(this));
+            });
+        actionCell.append(removeButton);
     }
 
     function removeRow(button) {
-        var row = button.parentNode.parentNode;
-        var inputs = row.getElementsByTagName("input");
-        // Clear input values
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].value = "";
-        }
+        var row = button.closest("tr");
+        var inputs = row.find("input");
+        
+        inputs.val("");
 
-        // Remove the row
-        row.parentNode.removeChild(row);
+        row.remove();
     }
 </script>
 
