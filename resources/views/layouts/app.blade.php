@@ -45,7 +45,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <ul class="navbar-nav d-md-none">
-                          @if(Auth::user()->isAdmin())
+                          @if(Auth::user() && Auth::user()->isAdmin() !== null && Auth::user()->isAdmin())
                             <li class="nav-item {{$activeProduk ?? ''}}">
                               <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('admin.daftarproduk')}}">Produk</a>
                             </li>
@@ -125,13 +125,10 @@
             </div>
         </nav>
 
-        @auth
-
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-              @if(Auth::user()->isAdmin())
+              @if(Auth::user() && Auth::user()->isAdmin() !== null && Auth::user()->isAdmin())
                 <li class="nav-item {{$activeProduk ?? ''}}">
                   <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('admin.daftarproduk')}}">Produk</a>
                 </li>
@@ -168,14 +165,13 @@
                   <a class="nav-link {{$activeNews ?? ''}}" href="{{route('berita')}}">Berita</a>
                 </li>
               @endif
+
               <li class="nav-item">
                 <a class="nav-link {{$activeContact ?? ''}}" href="{{route('contact')}}">Kontak</a>
               </li>
               </ul>
             </div>
           </nav>
-
-          @endauth
 
         <main class="py-4">
             @yield('content')

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if(Auth::user()->isAdmin())
+@if(Auth::user() && Auth::user()->isAdmin() !== null && Auth::user()->isAdmin())
 <div class="ms-3">
 <form method="GET" action="{{route('admin.tambahproduk')}}">
     <button class="btn btn-primary" href="{{route('admin.tambahproduk')}}">

@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    @if(Auth::user()->isAdmin())
+    @if(Auth::user() && Auth::user()->isAdmin() !== null && Auth::user()->isAdmin())
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9 col-sm-9 col-xs-8"></div> <!-- Adjusted column classes -->
@@ -86,7 +86,7 @@
           <p class="card-text">{{$port->content}}</p>
           <a href="{{route('admin.showport',['title' => $port->title, 'port' => $port])}}" class="btn btn-primary">Read More</a>
         </div>
-        @if(Auth::user()->isAdmin())
+        @if(Auth::user() && Auth::user()->isAdmin() !== null && Auth::user()->isAdmin())
         <a href="{{ route('admin.editport', $port) }}">
             <button class='btn btn-warning my-2 mx-3' id="edit" name='edit'>Edit Portofolio</button>
         </a>

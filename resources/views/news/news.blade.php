@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    @if(Auth::user()->isAdmin())
+    @if(Auth::user() && Auth::user()->isAdmin() !== null && Auth::user()->isAdmin())
     <div class="container-fluid">
         <div class="row">
             <div class="col"></div>
@@ -65,7 +65,7 @@
         <p><a style="text-decoration: none; color: inherit;" href="{{route('admin.showberita',['title' => $news2->title, 'news2' => $news2])}}">read more</a></p>
         <hr>
 
-        @if(Auth::user()->isAdmin())
+        @if(Auth::user() && Auth::user()->isAdmin() !== null && Auth::user()->isAdmin())
         <a href="{{route('admin.editberita',$news2)}}">
             <button class='btn btn-warning my-3' id="edit" name='edit'>Edit Berita</button>
         </a>

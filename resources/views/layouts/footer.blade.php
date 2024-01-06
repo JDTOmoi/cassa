@@ -17,7 +17,7 @@
                 <h5>Navigation</h5>
 
                 <ul class="nav flex-column">
-                    @if(Auth::user()->isAdmin())
+                    @if(Auth::user() && Auth::user()->isAdmin() !== null && Auth::user()->isAdmin())
                     <li class="nav-item mb-2"><a href="{{route('admin.daftarproduk')}}" class="footer-link nav-link p-0 text-muted">Produk</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.daftarbrand')}}" class="footer-link nav-link p-0 text-muted">Brand</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.daftarcategory')}}" class="footer-link nav-link p-0 text-muted">Kategori</a></li>
