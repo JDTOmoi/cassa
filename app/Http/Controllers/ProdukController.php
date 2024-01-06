@@ -171,13 +171,17 @@ class ProdukController extends Controller
     public function detailproduk(Produk $p){
         $produk = Produk::where('id',$p->id)->first();
 
+        $category = $produk->pcs()->latest()->first();
+        $kategori = $category ? $category->category : null;
+        $kategori1 = Category::all();
+
         $brand = $p->BrandProduk();
 
         return view('produk/detailproduk',
         [
             "activeProduk"=>"active",
         ],
-        compact('produk','brand'));
+        compact('produk','brand','kategori1','kategori'));
 
     }
 
