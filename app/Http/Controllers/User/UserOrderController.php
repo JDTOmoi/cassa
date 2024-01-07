@@ -17,8 +17,7 @@ class UserOrderController extends Controller
         $user = User::where('id',Auth::user()->id)->first();
         $order = $user->orders()->get();
 
-        return view('order/order',[
-            "activeOrder"=>"active",
+        return view('order/vieworder',[
             "order"=>$order
         ]);
     }
@@ -64,6 +63,6 @@ class UserOrderController extends Controller
         }
         
 
-        return redirect()->route('admin.order');
+        return redirect()->route('vieworder');
     }
 }

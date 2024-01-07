@@ -17,7 +17,7 @@ class OrderController extends Controller
         $order = Order::all();
 
         return view('order/order',[
-            "activeOrder"=>"active",
+            "activeDaftarOrder"=>"active",
             "order"=>$order
         ]);
     }
@@ -26,8 +26,7 @@ class OrderController extends Controller
         $user = User::where('id',Auth::user()->id)->first();
         $order = $user->orders()->get();
 
-        return view('order/order',[
-            "activeOrder"=>"active",
+        return view('order/vieworder',[
             "order"=>$order
         ]);
     }
@@ -73,6 +72,23 @@ class OrderController extends Controller
         }
         
 
-        return redirect()->route('admin.order');
+        return redirect()->route('vieworder');
+    }
+
+    public function editorder(Request $request)
+    {
+        $orderStatuses = json_decode($request->input('order_statuses'), true);
+    
+        foreach ($orderStatuses as $orderStatus) {
+            Order::where('id', $orderStatus['id'])->update(['status' => $orderStatus['status']]);
+        }
+    
+        return redirect()->route('admin.daftarorder');
+    }
+
+    public function hapusorder(Order $o){
+        $o->delete();
+
+        return redirect()->route('admin.daftarorder');
     }
 }

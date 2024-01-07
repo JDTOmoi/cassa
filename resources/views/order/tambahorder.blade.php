@@ -66,12 +66,10 @@
 <script>
 
     $(document).ready(function () {
-        // Attach addRow function to the "Add Row" button
         $("#addButton").on("click", function () {
             addRow();
         });
 
-        // Attach removeRow function to the "Remove" button (event delegation for dynamically added buttons)
         $("#removeButton").on("click", "button", function () {
             removeRow($(this));
         });

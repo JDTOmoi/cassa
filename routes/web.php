@@ -76,8 +76,7 @@ Route::group([
     Route::get('/order', [OrderController::class, 'orderview'])->name('daftarorder');
     Route::get('/order/tambahorder', [OrderController::class, 'tambahorderview'])->name('tambahorder');
     Route::post('/order/tambahorder', [OrderController::class, 'tambahorder'])->name('tambahord');
-    Route::get('/order/editorder/{o}', [OrderController::class, 'editorderview'])->name('editorder');
-    Route::put('/order/updateorder/{orderedit}', [OrderController::class, 'updateorder'])->name('updateord');
+    Route::put('/order/updateorder', [OrderController::class, 'editorder'])->name('updateord');
     Route::delete('/order/hapusorder/{o}', [OrderController::class, 'hapusorder'])->name('hapusorder');
 
     //news
@@ -115,6 +114,7 @@ Route::get('/news/{title}/{news2}',[UserNewsletterController::class,'show'])->na
 Route::get('/order/vieworder', [UserOrderController::class, 'listorderview'])->middleware('verified')->name('vieworder');
 Route::get('/order/tambahorder', [UserOrderController::class, 'tambahorderview'])->middleware('verified')->name('tambahorder');
 Route::post('/order/tambahorder', [UserOrderController::class, 'tambahorder'])->middleware('verified')->name('tambahord');
+Route::delete('/order/hapusorder/{o}', [OrderController::class, 'hapusorder'])->name('hapusorder');
 Route::get('/transaction/viewtransaction',[TransactionController::class, 'listtransactionview'])->middleware('verified')->name('viewtransaction');
 Route::get('/contact', function () {
     return view('contact', ['activeContact' => 'active']);

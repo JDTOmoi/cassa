@@ -21,6 +21,7 @@
                     <li class="nav-item mb-2"><a href="{{route('admin.daftarproduk')}}" class="footer-link nav-link p-0 text-muted">Produk</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.daftarbrand')}}" class="footer-link nav-link p-0 text-muted">Brand</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.daftarcategory')}}" class="footer-link nav-link p-0 text-muted">Kategori</a></li>
+                    <li class="nav-item mb-2"><a href="{{route('admin.daftarorder')}}" class="footer-link nav-link p-0 text-muted">Daftar Order</a></li>
                     <li class="nav-item mb-2"><a href="{{route('tambahorder')}}" class="footer-link nav-link p-0 text-muted">Order</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.kirimtransaksi')}}" class="footer-link nav-link p-0 text-muted">Send Transaction</a></li>
                     <li class="nav-item mb-2"><a href="{{route('admin.portofolio')}}" class="footer-link nav-link p-0 text-muted">Portofolio</a></li>

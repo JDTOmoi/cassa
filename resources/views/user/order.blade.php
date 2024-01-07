@@ -3,10 +3,6 @@
 @section('content')
 
 <div class="table-responsive">
-<form id="updateStatusForm" method="POST" action="{{ route('admin.updateord') }}">
-    @csrf
-    @method('put')
-    <input type="hidden" name="order_statuses" id="orderStatusesInput" value="">
 <table class="table mx-3">
     <thead>
       <tr>
@@ -47,48 +43,21 @@
         </td>
         <td>{{date("d-M-Y H:i",strtotime($o->created_at))}}</td>
         <td>
-            @php($statuses = ["Queued", "Pending", "Arrived"])
-            @php($counter = 0)
-            <select name="status[]" id="status" class="form-select" required onchange="updateOrderStatus(this, {{ $o->id }})">
-                @foreach($statuses as $s)
-                @if($o->status == $counter)
-                <option value="{{$counter}}" selected>{{$s}}</option>
-                @else
-                <option value="{{$counter}}">{{$s}}</option>
-                @endif
-                @php($counter++)
-                @endforeach
-            </select>
+            @if($o->status == 0)
             <form action="{{ route('admin.hapusorder', $o)}}" method="POST">
                 @method('delete')
                 @csrf
                 <button class = 'btn btn-danger' id="delete" name='delete'>Cancel</button>
             </form>
+            @endif
         </td>
+
     </tr>
     @endforeach
+
+
     </tbody>
 </table>
-@csrf
-@method('put')
-<button type="button" class="btn btn-primary" onclick="submitStatusUpdateForm()">Update Status</button>
-<form>
 </div>
-
-<script>
-    var selectedOrders = [];
-
-    function updateOrderStatus(selectElement, orderId) {
-        var selectedStatus = selectElement.value;
-        if (selectedStatus !== "") {
-            selectedOrders.push({ id: orderId, status: selectedStatus });
-        }
-    }
-
-    function submitStatusUpdateForm() {
-        document.getElementById('orderStatusesInput').value = JSON.stringify(selectedOrders);
-        document.getElementById('updateStatusForm').submit();
-    }
-</script>
 
 @endsection

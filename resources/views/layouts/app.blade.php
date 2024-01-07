@@ -59,6 +59,9 @@
                             <li class="nav-item {{$activeTransaction ?? ''}}">
                               <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('admin.kirimtransaksi')}}">Send Transaction</a>
                             </li>
+                            <li class="nav-item {{$activeDaftarOrder ?? ''}}">
+                              <a class="nav-link {{$activeDaftarOrder ?? ''}}" href="{{route('admin.daftarorder')}}">Daftar Order</a>
+                            </li>
                             <li class="nav-item {{$activeOrder ?? ''}}">
                               <a class="nav-link {{$activeOrder ?? ''}}" href="{{route('tambahorder')}}">Order</a>
                             </li>
@@ -141,6 +144,9 @@
                 </li>
                 <li class="nav-item {{$activeTransaction ?? ''}}">
                   <a class="nav-link {{$activeTransaction ?? ''}}" href="{{route('admin.kirimtransaksi')}}">Send Transaction</a>
+                </li>
+                <li class="nav-item {{$activeDaftarOrder ?? ''}}">
+                  <a class="nav-link {{$activeDaftarOrder ?? ''}}" href="{{route('admin.daftarorder')}}">Daftar Order</a>
                 </li>
                 <li class="nav-item {{$activeOrder ?? ''}}">
                   <a class="nav-link {{$activeOrder ?? ''}}" href="{{route('tambahorder')}}">Order</a>
