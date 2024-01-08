@@ -22,7 +22,7 @@
 <div class="container mt-5">
 <form action="{{route('admin.tambahord')}}" method="POST">
     @csrf
-    <input type="hidden" name="user_id" value={{Auth::user()->id}}>
+    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
     <div class="mb-3">
             <label for="image" class="form-label">Order Message</label>
             <input type="text" class="form-control" id="ord_message" name="ord_message" placeholder="Order Message">
