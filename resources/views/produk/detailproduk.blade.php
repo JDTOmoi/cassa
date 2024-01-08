@@ -35,12 +35,12 @@
         @foreach($kategori1 as $k)
 
             @if($kategori == $k)
-            <div class="fs-5 my-3" style="color:rgb(36, 144, 238)">
-                {{$k->category_name}}
+            <div class="fs-5 my-3" style="">
+                <a href="{{ route('home', ['kategori' => $k->id]) }}" style="text-decoration:none; color:rgb(36, 144, 238)" class="">{{$k->category_name}}</a>
             </div>
             @else
             <div class="fs-5 my-3">
-                {{$k->category_name}}
+                <a href="{{ route('home', ['kategori' => $k->id]) }}" style="text-decoration:none; color:Black" class="">{{$k->category_name}}</a>
             </div>
             @endif
         @endforeach
