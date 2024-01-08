@@ -34,7 +34,7 @@
         <th scope="row">
             <div style="max-height: 200px; overflow: hidden;">
             @if($p->image)
-            <img class=" img-fluid " src="{{asset('storage/'.$p->image)}}" alt="{{$p->name}}">
+            <img class=" img-fluid " src="{{asset('storage'.$p->image)}}" alt="{{$p->name}}">
             @else
             <img src="{{asset('images/imagenotfound.jpg')}}" alt="{{$p->name}}" class="img-fluid">
             @endif
