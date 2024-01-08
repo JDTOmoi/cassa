@@ -51,8 +51,14 @@ class OrderController extends Controller
             'notes' => 'required'
         ]);
 
+        $user_id = 1;
+
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+        }
+
         $order = Order::create([
-            'user_id' => $validate['user_id'],
+            'user_id' => $user_id,
             'ord_message' => $validate['ord_message'],
             'phone_number' => $validate['phone_number'],
             'status'=> '0'
