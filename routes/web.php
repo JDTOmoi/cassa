@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -8,13 +9,13 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\User\UserOrderController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\User\UserProdukController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\User\UserNewsletterController;
+use App\Http\Controllers\User\UserOrderController;
+use App\Http\Controllers\User\UserProdukController;
 use App\Http\Controllers\User\UserPortfolioController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\User\UserNewsletterController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -119,6 +120,9 @@ Route::get('/transaction/viewtransaction',[TransactionController::class, 'listtr
 Route::get('/contact', function () {
     return view('contact', ['activeContact' => 'active']);
  })->name('contact');
+
+ Route::get('/deleteuser', [UserController::class, 'deleteuserview'])->name('deleteuser');
+ Route::post('/deleteuser/delete', [UserController::class, 'deleteuser'])->name('hapususer');
 
 // Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'welcome'])->middleware('auth')->name('welcome');
 

@@ -19,6 +19,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -71,7 +72,7 @@
                             <li class="nav-item">
                               <a class="nav-link {{$activeNews ?? ''}}" href="{{route('admin.berita')}}">Berita</a>
                             </li>
-                            
+
                           @else
                             <li class="nav-item {{$activeProduk ?? ''}}">
                               <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('produk')}}">Produk</a>
@@ -117,7 +118,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                    <a class="dropdown-item" style="color:red;" href="{{route('deleteuser')}}">Delete Account</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -157,7 +158,7 @@
                 <li class="nav-item">
                   <a class="nav-link {{$activeNews ?? ''}}" href="{{route('admin.berita')}}">Berita</a>
                 </li>
-                
+
               @else
                 <li class="nav-item {{$activeProduk ?? ''}}">
                   <a class="nav-link {{$activeProduk ?? ''}}" href="{{route('produk')}}">Produk</a>
