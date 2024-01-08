@@ -58,6 +58,8 @@
 
     </tbody>
 </table>
+
+<a class="mx-3" href="https://wa.me/6285795890288?text=Hello">Discuss Order(s) on Whatsapp</a>
 </div>
 
 @endsection
