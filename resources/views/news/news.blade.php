@@ -44,7 +44,7 @@
 
     <div class="px-5 py-3 h-20 container">
         <div style="max-height: 200px; overflow: hidden;">
-        <a href="{{route('admin.showberita',['title' => $news2->title, 'news2' => $news2])}}">
+        <a href="{{route('showberita',['title' => $news2->title, 'news2' => $news2])}}">
         @if($news2->news_image)
         <img class=" img-fluid " src="{{asset('storage/'.$news2->news_image)}}" alt="{{$news2->title}}">
         @else
