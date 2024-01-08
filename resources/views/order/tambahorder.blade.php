@@ -57,7 +57,7 @@
         </tr>
     </table>
     <button type="button" id="addButton">Add Row</button>
-    <button type="submit">Submit</button>
+    <button type="submit">Order</button>
 </form>
 </div>
 
