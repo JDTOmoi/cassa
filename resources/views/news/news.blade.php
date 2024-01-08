@@ -54,7 +54,7 @@
         </div>
         <article class="blog-post">
         <h2  class="blog-post-title">
-            <a style="text-decoration: none; color: inherit;" href="{{route('admin.showberita',['title' => $news2->title, 'news2' => $news2])}}">
+            <a style="text-decoration: none; color: inherit;" href="{{route('showberita',['title' => $news2->title, 'news2' => $news2])}}">
             {{$news2->title}}
             </a>
         </h2>
@@ -62,7 +62,7 @@
         <p class="blog-post-meta">{{date('d-M-Y',strtotime($news2->created_at))}}</p>
 
         <p>{{$news2->content}}</p>
-        <p><a style="text-decoration: none; color: inherit;" href="{{route('admin.showberita',['title' => $news2->title, 'news2' => $news2])}}">read more</a></p>
+        <p><a style="text-decoration: none; color: inherit;" href="{{route('showberita',['title' => $news2->title, 'news2' => $news2])}}">read more</a></p>
         <hr>
 
         @if(Auth::user() && Auth::user()->isAdmin() !== null && Auth::user()->isAdmin())
