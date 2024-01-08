@@ -28,7 +28,10 @@
         <td>
             <ul>
                 @foreach($o->prs as $pr)
-                    <li>{{$pr->quantity}} {{$pr->produk->name}}</li>
+                    <li>{{$pr->quantity}} {{$pr->produk->name}}<br>
+                    @if($pr->notes != null)
+                        <i>({{$pr->notes}})</i>
+                    @endif</li>
                 @endforeach
             </ul>
         </td>

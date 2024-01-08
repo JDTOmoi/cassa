@@ -78,11 +78,13 @@ class OrderController extends Controller
     public function editorder(Request $request)
     {
         $orderStatuses = json_decode($request->input('order_statuses'), true);
-    
-        foreach ($orderStatuses as $orderStatus) {
-            Order::where('id', $orderStatus['id'])->update(['status' => $orderStatus['status']]);
+        
+        if ($orderStatuses != null) {
+            foreach ($orderStatuses as $orderStatus) {
+                Order::where('id', $orderStatus['id'])->update(['status' => $orderStatus['status']]);
+            }
         }
-    
+        
         return redirect()->route('admin.daftarorder');
     }
 

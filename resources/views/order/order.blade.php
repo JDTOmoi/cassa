@@ -32,7 +32,10 @@
         <td>
             <ul>
                 @foreach($o->prs as $pr)
-                    <li>{{$pr->quantity}} {{$pr->produk->name}}</li>
+                    <li>{{$pr->quantity}} {{$pr->produk->name}}<br>
+                    @if($pr->notes != null)
+                        <i>({{$pr->notes}})</i>
+                    @endif</li>
                 @endforeach
             </ul>
         </td>
@@ -59,11 +62,6 @@
                 @php($counter++)
                 @endforeach
             </select>
-            <form action="{{ route('admin.hapusorder', $o)}}" method="POST">
-                @method('delete')
-                @csrf
-                <button class = 'btn btn-danger' id="delete" name='delete'>Cancel</button>
-            </form>
         </td>
     </tr>
     @endforeach
